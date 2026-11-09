@@ -8,7 +8,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Galmuri11:wght@400;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Jua&family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="./style.css">
   <script src="./script.js" defer></script>
@@ -75,29 +75,18 @@
 
     <!-- 오른쪽 위젯 -->
     <aside class="widgets">
-      <section class="window profile-widget">
-        <div class="window-bar">
-          <span>✿ profile.exe</span><span>─ □ ×</span>
-        </div>
-        <div class="widget-content">
-          <div class="profile-row">
-            <button id="profile-button" class="profile-photo" title="프로필 사진 변경">
-              <img id="profile-img" src="./assets/profile.png"
-                   alt="프로필 사진" onerror="this.hidden=true">
-              <span id="profile-placeholder">o</span>
-            </button>
-            <input id="profile-upload" type="file" accept="image/*" hidden>
-            <div>
-              <h2>ooxxd</h2>
-              <p>보안과 개발을 공부하며 기록하는 공간</p>
-            </div>
-          </div>
-          <div class="profile-links">
-            <button data-page="about" class="text-link">About me ↗</button>
-            <a href="https://github.com/ooxxd" target="_blank" rel="noopener">GitHub ↗</a>
-          </div>
-        </div>
-      </section>
+      <section class="window">
+  <div class="window-bar">
+    <span>✿ todo.txt</span><span>─ □ ×</span>
+  </div>
+  <div class="todo-paper">
+    <div id="todo-list"></div>
+    <div class="todo-buttons">
+      <button id="add-todo-btn" class="mini-btn">+ 추가</button>
+      <button id="save-todo-btn" class="mini-btn">저장</button>
+    </div>
+  </div>
+</section>
 
       <section class="window">
         <div class="window-bar">
