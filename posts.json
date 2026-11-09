@@ -1,0 +1,12 @@
+
+[
+  {
+    "id": "first-post",
+    "title": "Security Note 블로그 시작",
+    "date": "2026-11-09",
+    "category": "블로그/기술문서",
+    "tags": ["GitHub", "Blog"],
+    "summary": "개인 기술 블로그 제작 및 운영 계획",
+    "content": "# 블로그 시작\n\nGitHub Pages를 이용하여 개인 기술 블로그를 만들었습니다.\n\n## 앞으로 기록할 내용\n\n- CTF 문제 풀이\n- 개발 프로젝트\n- 웹 취약점 학습\n- 보안 기술문서\n\n꾸준히 기록하는 것이 목표입니다."
+  }
+]
