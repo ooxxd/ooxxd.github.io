@@ -3,105 +3,107 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Security Note | ooxxd</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ooxxd | Security Note</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Galmuri11:wght@400;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="./style.css">
   <script src="./script.js" defer></script>
 </head>
 <body>
-  <div class="layout">
-    <!-- 왼쪽 사이드바 -->
-    <aside class="sidebar">
+  <div class="app">
+
+    <!-- 왼쪽 메뉴 -->
+    <aside class="sidebar" id="sidebar">
       <div class="brand">
-        <div class="brand-icon">▣ &gt;_</div>
-        <h2>Security Note</h2>
+        <button id="logo-button" class="logo-button" title="상단 이미지 변경">
+          <img id="logo-img" src="./assets/logo.png"
+               alt="블로그 로고" onerror="this.hidden=true">
+          <span id="logo-placeholder">▣ &gt;_</span>
+        </button>
+        <input type="file" id="logo-upload" accept="image/*" hidden>
+        <h1>Security<br>Note</h1>
         <p>Development · Security · Study</p>
       </div>
 
-      <nav class="navigation">
-        <a href="#home" class="active">⌂ &nbsp; Home</a>
-        <a href="#about">♙ &nbsp; About</a>
-        <a href="#posts">▤ &nbsp; Archives</a>
-        <a href="#tags">◇ &nbsp; Tags</a>
+      <div class="side-divider"></div>
+
+      <nav class="main-nav" aria-label="주 메뉴">
+        <button data-page="home" class="nav-btn active">⌂ <span>Home</span></button>
+        <button data-page="about" class="nav-btn">♙ <span>About</span></button>
+        <button data-page="archives" class="nav-btn">▤ <span>Archives</span></button>
+        <button data-page="tags" class="nav-btn">◇ <span>Tags</span></button>
+        <button data-page="write" class="nav-btn">✎ <span>글쓰기</span></button>
       </nav>
 
-      <div class="sidebar-section">
-        <h3>▱ &nbsp; Categories</h3>
-        <button class="category" data-category="all">전체 글</button>
-        <button class="category" data-category="dev">개발</button>
-        <button class="category" data-category="ctf">CTF / Wargame</button>
-        <button class="category" data-category="bug">Bug Bounty</button>
-        <button class="category" data-category="docs">블로그 / 기술문서</button>
-        <button class="category" data-category="paper">논문 / 컨퍼런스</button>
-        <button class="category" data-category="career">공모전 / 자격증</button>
+      <div class="side-divider"></div>
+
+      <div class="category-menu">
+        <h2>▱ &nbsp; Categories</h2>
+        <button class="category-btn" data-category="개발">▱ &nbsp; 개발</button>
+        <button class="category-btn" data-category="CTF/Wargame">▱ &nbsp; CTF / Wargame</button>
+        <button class="category-btn" data-category="Bug Bounty">▱ &nbsp; Bug Bounty</button>
+        <button class="category-btn" data-category="블로그/기술문서">▱ &nbsp; 블로그 / 기술문서</button>
+        <button class="category-btn" data-category="논문/컨퍼런스">▱ &nbsp; 논문 / 컨퍼런스</button>
+        <button class="category-btn" data-category="공모전/자격증">▱ &nbsp; 공모전 / 자격증</button>
       </div>
-      <div class="sidebar-dots"></div>
+
+      <div class="side-footer">
+        <span>● ● ● ● ●</span>
+        <small>© ooxxd</small>
+      </div>
     </aside>
 
-    <!-- 가운데 -->
-    <main class="main-content" id="home">
+    <!-- 메인 콘텐츠 -->
+    <main class="main">
       <header class="topbar">
-        <input id="search" type="search" placeholder="글 검색하기...">
-        <a href="https://github.com/" aria-label="GitHub">GitHub ↗</a>
-        <button id="theme-toggle" aria-label="테마 전환">☾</button>
+        <button class="mobile-menu" id="menu-toggle" aria-label="메뉴 열기">☰</button>
+        <div class="search-wrap">
+          <span>⌕</span>
+          <input type="search" id="search" placeholder="글 검색하기...">
+        </div>
+        <a id="github-link" href="https://github.com/ooxxd" target="_blank" rel="noopener">GitHub ↗</a>
+        <button id="theme-toggle" class="icon-button" aria-label="테마 변경">☾</button>
       </header>
 
-      <section class="window welcome">
-        <div class="window-title">
-          <span>✿ &nbsp; welcome.exe</span>
-          <span>─ □ ×</span>
-        </div>
-        <div class="welcome-content">
-          <h1>Security Study Log_</h1>
-          <h2>개발하고, 분석하고, 기록하는 보안 학습 블로그</h2>
-          <p>
-            CTF 문제 풀이부터 취약점 분석, 개발, 논문 정리까지<br>
-            보안 공부 과정과 기록을 차곡차곡 남기는 공간입니다.
-          </p>
-          <div class="actions">
-            <a class="primary-btn" href="#posts">▤ &nbsp; 최신 글 보러가기 →</a>
-            <a class="outline-btn" href="#about">About Me</a>
-          </div>
-        </div>
-      </section>
-
-      <section class="posts" id="posts">
-        <div class="section-heading">
-          <h2>▱ &nbsp; 최근 게시글</h2>
-          <button class="text-button" id="show-all">전체 보기 →</button>
-        </div>
-        <div id="post-list"></div>
-        <p id="empty-message" hidden>검색 결과가 없습니다.</p>
-      </section>
+      <!-- 화면별 내용이 여기 표시됨 -->
+      <div id="page-content" aria-live="polite"></div>
     </main>
 
     <!-- 오른쪽 위젯 -->
     <aside class="widgets">
-      <section class="window profile" id="about">
-        <div class="window-title">
-          <span>profile.exe</span>
-          <span>─ □ ×</span>
+      <section class="window profile-widget">
+        <div class="window-bar">
+          <span>✿ profile.exe</span><span>─ □ ×</span>
         </div>
-        <div class="widget-body">
+        <div class="widget-content">
           <div class="profile-row">
-            <div class="avatar">o</div>
+            <button id="profile-button" class="profile-photo" title="프로필 사진 변경">
+              <img id="profile-img" src="./assets/profile.png"
+                   alt="프로필 사진" onerror="this.hidden=true">
+              <span id="profile-placeholder">o</span>
+            </button>
+            <input id="profile-upload" type="file" accept="image/*" hidden>
             <div>
               <h2>ooxxd</h2>
-              <p>보안과 개발을 좋아하는 학생입니다.</p>
+              <p>보안과 개발을 공부하며 기록하는 공간</p>
             </div>
           </div>
-          <div class="socials">
-            <a href="https://github.com/">GitHub ↗</a>
+          <div class="profile-links">
+            <button data-page="about" class="text-link">About me ↗</button>
+            <a href="https://github.com/ooxxd" target="_blank" rel="noopener">GitHub ↗</a>
           </div>
         </div>
       </section>
 
-      <section class="window todo">
-        <div class="window-title">
-          <span>✿ &nbsp; todo.txt</span>
-          <span>─ □ ×</span>
+      <section class="window">
+        <div class="window-bar">
+          <span>✿ todo.txt</span><span>─ □ ×</span>
         </div>
-        <div class="memo">
+        <div class="todo-paper" id="todo-list">
           <label><input type="checkbox"> CTF 꾸준히 풀기</label>
           <label><input type="checkbox"> 관심 취약점 공부하기</label>
           <label><input type="checkbox"> 논문 1편 읽고 정리하기</label>
@@ -109,17 +111,18 @@
         </div>
       </section>
 
-      <section class="window" id="tags">
-        <div class="window-title">
-          <span>✿ &nbsp; tags.exe</span>
-          <span>─ □ ×</span>
+      <section class="window">
+        <div class="window-bar">
+          <span>✿ tags.exe</span><span>─ □ ×</span>
         </div>
-        <div class="tag-list">
-          <span>#CTF</span><span>#Web</span><span>#Pwn</span>
-          <span>#BugBounty</span><span>#개발</span><span>#회고</span>
-        </div>
+        <div id="widget-tags" class="widget-tags"></div>
       </section>
+
+      <div class="side-note">learning, breaking & documenting_</div>
     </aside>
+
   </div>
+
+  <div id="toast" role="status"></div>
 </body>
 </html>
