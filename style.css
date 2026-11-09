@@ -694,3 +694,188 @@ body.light .calendar-day.heading { color: #675448; }
 .content-panel {
   font-family: Arial, "Malgun Gothic", sans-serif;
 }
+/* ===== 폰트 ===== */
+body {
+  font-family: "Gowun Dodum", "Malgun Gothic", sans-serif;
+}
+
+.brand h1,
+.window-bar,
+.pixel {
+  font-family: "Pixelify Sans", monospace;
+}
+
+.hero h1 {
+  font-family: "Pixelify Sans", monospace;
+  font-size: clamp(28px, 3.2vw, 48px);
+  line-height: 1.25;
+  letter-spacing: 0;
+  font-weight: 700;
+  text-shadow: 0 1px 0 rgba(0,0,0,.08);
+}
+
+.hero-subtitle,
+.post-details h3,
+.page-heading h1,
+.profile-row h2,
+.content-panel h2,
+.section-title h2 {
+  font-family: "Jua", "Gowun Dodum", sans-serif;
+  letter-spacing: .2px;
+}
+
+/* ===== 왼쪽 체크무늬 ===== */
+.sidebar {
+  position: sticky;
+  top: 0;
+  overflow-x: hidden;
+}
+
+.sidebar::before,
+.sidebar::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 56px;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    linear-gradient(45deg, rgba(255,245,217,.28) 25%, transparent 25%, transparent 75%, rgba(255,245,217,.28) 75%, rgba(255,245,217,.28)),
+    linear-gradient(45deg, rgba(255,245,217,.18) 25%, transparent 25%, transparent 75%, rgba(255,245,217,.18) 75%, rgba(255,245,217,.18));
+  background-size: 28px 28px;
+  background-position: 0 0, 14px 14px;
+  border-top: 1px solid rgba(255,245,217,.25);
+  border-bottom: 1px solid rgba(255,245,217,.25);
+}
+
+.sidebar::before { top: 0; }
+.sidebar::after { bottom: 0; }
+
+.sidebar > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== 왼쪽 버튼 더 참고 이미지 느낌 ===== */
+.nav-btn,
+.category-btn {
+  border-radius: 14px;
+  padding: 12px 14px;
+  font-size: 15px;
+}
+
+.nav-btn.active,
+.category-btn.active,
+.nav-btn:hover,
+.category-btn:hover {
+  background: #fff7e6;
+  color: #34271f;
+  box-shadow: inset 0 0 0 1px rgba(72,49,33,.08);
+}
+
+/* ===== 투두 ===== */
+.todo-item {
+  display: grid;
+  grid-template-columns: 24px 1fr 24px;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 0;
+  border-bottom: 1px dashed #cfbda0;
+}
+
+.todo-text {
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--ink);
+  font-size: 13px;
+  width: 100%;
+}
+
+.todo-remove {
+  border: 0;
+  background: transparent;
+  color: #7a5b49;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.todo-buttons {
+  display: flex;
+  gap: 8px;
+  margin: 10px 13px 0;
+}
+
+.mini-btn {
+  border: 1px solid var(--ink);
+  border-radius: 8px;
+  padding: 7px 12px;
+  background: var(--yellow);
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* ===== 글 카드 액션 ===== */
+.post-card-wrap {
+  margin-bottom: 12px;
+}
+
+.post-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  margin-top: 6px;
+}
+
+.post-actions button {
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text);
+  border-radius: 8px;
+  padding: 5px 10px;
+  font-size: 12px;
+}
+
+.post-actions button:hover {
+  background: var(--yellow);
+  color: var(--ink);
+}
+
+/* ===== 페이지 상단 액션 ===== */
+.page-heading-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.page-heading-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* ===== 소개 수정 폼 ===== */
+.about-form textarea,
+.about-form input {
+  margin-bottom: 12px;
+}
+
+.about-save-wrap {
+  margin-top: 14px;
+}
+
+@media(max-width: 760px) {
+  .sidebar::before,
+  .sidebar::after {
+    height: 42px;
+  }
+
+  .page-heading-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
