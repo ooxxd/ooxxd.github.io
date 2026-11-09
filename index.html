@@ -1,0 +1,125 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Security Note | ooxxd</title>
+  <link rel="stylesheet" href="./style.css">
+  <script src="./script.js" defer></script>
+</head>
+<body>
+  <div class="layout">
+    <!-- 왼쪽 사이드바 -->
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-icon">▣ &gt;_</div>
+        <h2>Security Note</h2>
+        <p>Development · Security · Study</p>
+      </div>
+
+      <nav class="navigation">
+        <a href="#home" class="active">⌂ &nbsp; Home</a>
+        <a href="#about">♙ &nbsp; About</a>
+        <a href="#posts">▤ &nbsp; Archives</a>
+        <a href="#tags">◇ &nbsp; Tags</a>
+      </nav>
+
+      <div class="sidebar-section">
+        <h3>▱ &nbsp; Categories</h3>
+        <button class="category" data-category="all">전체 글</button>
+        <button class="category" data-category="dev">개발</button>
+        <button class="category" data-category="ctf">CTF / Wargame</button>
+        <button class="category" data-category="bug">Bug Bounty</button>
+        <button class="category" data-category="docs">블로그 / 기술문서</button>
+        <button class="category" data-category="paper">논문 / 컨퍼런스</button>
+        <button class="category" data-category="career">공모전 / 자격증</button>
+      </div>
+      <div class="sidebar-dots"></div>
+    </aside>
+
+    <!-- 가운데 -->
+    <main class="main-content" id="home">
+      <header class="topbar">
+        <input id="search" type="search" placeholder="글 검색하기...">
+        <a href="https://github.com/" aria-label="GitHub">GitHub ↗</a>
+        <button id="theme-toggle" aria-label="테마 전환">☾</button>
+      </header>
+
+      <section class="window welcome">
+        <div class="window-title">
+          <span>✿ &nbsp; welcome.exe</span>
+          <span>─ □ ×</span>
+        </div>
+        <div class="welcome-content">
+          <h1>Security Study Log_</h1>
+          <h2>개발하고, 분석하고, 기록하는 보안 학습 블로그</h2>
+          <p>
+            CTF 문제 풀이부터 취약점 분석, 개발, 논문 정리까지<br>
+            보안 공부 과정과 기록을 차곡차곡 남기는 공간입니다.
+          </p>
+          <div class="actions">
+            <a class="primary-btn" href="#posts">▤ &nbsp; 최신 글 보러가기 →</a>
+            <a class="outline-btn" href="#about">About Me</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="posts" id="posts">
+        <div class="section-heading">
+          <h2>▱ &nbsp; 최근 게시글</h2>
+          <button class="text-button" id="show-all">전체 보기 →</button>
+        </div>
+        <div id="post-list"></div>
+        <p id="empty-message" hidden>검색 결과가 없습니다.</p>
+      </section>
+    </main>
+
+    <!-- 오른쪽 위젯 -->
+    <aside class="widgets">
+      <section class="window profile" id="about">
+        <div class="window-title">
+          <span>profile.exe</span>
+          <span>─ □ ×</span>
+        </div>
+        <div class="widget-body">
+          <div class="profile-row">
+            <div class="avatar">o</div>
+            <div>
+              <h2>ooxxd</h2>
+              <p>보안과 개발을 좋아하는 학생입니다.</p>
+            </div>
+          </div>
+          <div class="socials">
+            <a href="https://github.com/">GitHub ↗</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="window todo">
+        <div class="window-title">
+          <span>✿ &nbsp; todo.txt</span>
+          <span>─ □ ×</span>
+        </div>
+        <div class="memo">
+          <label><input type="checkbox"> CTF 꾸준히 풀기</label>
+          <label><input type="checkbox"> 관심 취약점 공부하기</label>
+          <label><input type="checkbox"> 논문 1편 읽고 정리하기</label>
+          <label><input type="checkbox"> 블로그 글 주 1회 작성하기</label>
+        </div>
+      </section>
+
+      <section class="window" id="tags">
+        <div class="window-title">
+          <span>✿ &nbsp; tags.exe</span>
+          <span>─ □ ×</span>
+        </div>
+        <div class="tag-list">
+          <span>#CTF</span><span>#Web</span><span>#Pwn</span>
+          <span>#BugBounty</span><span>#개발</span><span>#회고</span>
+        </div>
+      </section>
+    </aside>
+  </div>
+</body>
+</html>
