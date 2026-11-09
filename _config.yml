@@ -1,0 +1,10 @@
+
+title: "ooxxd's Security Note"
+description: "정보보안 학습과 CTF 기록"
+url: "https://ooxxd.github.io"
+baseurl: ""
+
+timezone: Asia/Seoul
+markdown: kramdown
+
+permalink: /posts/:title/
