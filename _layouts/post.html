@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>{{ page.title | escape }} | ooxxd</title>
+
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/galmuri@latest/dist/galmuri.css">
+
+  <link rel="stylesheet" href="{{ '/style.css' | relative_url }}">
+</head>
+
+<body class="post-page">
+
+  <div class="post-layout">
+
+    <aside class="post-sidebar">
+      <h2>Security<br>Note_</h2>
+
+      <nav>
+        <a href="{{ '/' | relative_url }}#/home">⌂ Home</a>
+        <a href="{{ '/' | relative_url }}#/archives">▤ Archives</a>
+        <a href="{{ '/' | relative_url }}#/tags">◇ Tags</a>
+      </nav>
+    </aside>
+
+    <main class="post-main">
+
+      <a class="post-back" href="{{ '/' | relative_url }}#/archives">
+        ← 게시글 목록
+      </a>
+
+      <article class="post-document">
+
+        <div class="post-window-bar">
+          <span>✿ post.md</span>
+          <span>─ □ ×</span>
+        </div>
+
+        <div class="post-document-content">
+
+          <div class="post-metadata">
+            {{ page.date | date: "%Y.%m.%d" }}
+            · {{ page.category | escape }}
+          </div>
+
+          <h1>{{ page.title | escape }}</h1>
+
+          <div class="post-tags">
+            {% for tag in page.tags %}
+              <span>#{{ tag | escape }}</span>
+            {% endfor %}
+          </div>
+
+          <hr>
+
+          <div class="post-markdown">
+            {{ content }}
+          </div>
+
+        </div>
+
+      </article>
+
+      <a class="post-back" href="{{ '/' | relative_url }}#/archives">
+        ← 다른 게시글 보기
+      </a>
+
+    </main>
+  </div>
+
+</body>
+</html>
