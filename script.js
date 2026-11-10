@@ -80,7 +80,7 @@ function showEmpty(message = "아직 등록된 게시글이 없습니다.") {
 
 async function loadPosts() {
   const response = await fetch(
-    "./posts.json",
+    "./posts-feed.json",
     { cache: "no-store" }
   );
 
