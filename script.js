@@ -341,75 +341,130 @@ function calendarHTML() {
   `;
 }
 
-/* ---------- Home ---------- */
+
+/* ===========================================
+   Home Dashboard
+=========================================== */
 
 function renderHome() {
   const list = allPosts();
 
-  const categoryCount = new Set(
-    list.map(post => post.category)
-  ).size;
+  // 실제 게시글에서 통계 계산
+  const categoryCounts = {};
 
-  const tagCount = new Set(
-    list.flatMap(post => post.tags)
-  ).size;
+  CATEGORIES.forEach(category => {
+    categoryCounts[category] = list.filter(
+      post => post.category === category
+    ).length;
+  });
+
+  const usedCategories = CATEGORIES.filter(
+    category => categoryCounts[category] > 0
+  ).length;
+
+  const uniqueTags = new Set(
+    list.flatMap(post => post.tags || [])
+  );
+
+  // 최근 작성한 게시글
+  const latestPost = list[0];
+
+  // 카테고리 카드 생성
+  const categoryCards = CATEGORIES.map(category => {
+    const count = categoryCounts[category];
+
+    return `
+      <button
+        class="home-category-card"
+        data-category="${escapeHTML(category)}">
+
+        <span class="home-category-name">
+          ▱ ${escapeHTML(category)}
+        </span>
+
+        <span class="home-category-count">
+          ${count} posts →
+        </span>
+
+      </button>
+    `;
+  }).join("");
 
   $("#page-content").innerHTML = `
     ${hero()}
 
-    <div class="dashboard-grid">
+    <!-- 학습 현황 -->
+    <section class="home-section">
+      <div class="section-title">
+        <h2>▤ 학습 아카이브</h2>
+      </div>
 
-      ${calendarHTML()}
+      <div class="home-stats">
 
-      <section class="dashboard-card">
-
-        <h3>▤ Learning Archive</h3>
-
-        <div class="stat-number">
-          ${list.length}
+        <div class="home-stat">
+          <strong>${list.length}</strong>
+          <span>전체 게시글</span>
         </div>
 
-        <div class="stat-label">
-          작성한 게시글
+        <div class="home-stat">
+          <strong>${usedCategories}</strong>
+          <span>기록한 카테고리</span>
         </div>
 
-        <hr style="
-          border:0;
-          border-top:1px dashed #a38b76;
-          margin:18px 0;
-        ">
+        <div class="home-stat">
+          <strong>${uniqueTags.size}</strong>
+          <span>사용한 태그</span>
+        </div>
 
-        <p>
-          카테고리
-          <b>${categoryCount}</b>개
-        </p>
+      </div>
+    </section>
 
-        <p>
-          태그
-          <b>${tagCount}</b>개
-        </p>
+    <!-- 카테고리 바로가기 -->
+    <section class="home-section">
+      <div class="section-title">
+        <h2>▱ Categories</h2>
+      </div>
 
-        <button
-          class="action-button"
-          data-page="archives">
-          전체 기록 보기 →
+      <div class="home-category-grid">
+        ${categoryCards}
+      </div>
+    </section>
+
+    <!-- 학습 캘린더 -->
+    <section class="home-section">
+      <div class="section-title">
+        <h2>▦ Study Calendar</h2>
+      </div>
+
+      <div class="home-calendar-wrap">
+        ${calendarHTML()}
+      </div>
+    </section>
+
+    <!-- 최신 기록 -->
+    <section class="home-section">
+      <div class="section-title">
+        <h2>▤ Latest Record</h2>
+      </div>
+
+      ${
+        latestPost
+          ? postCard(latestPost)
+          : showEmpty("첫 번째 게시글을 작성해 보세요.")
+      }
+    </section>
+
+    <!-- 최근 게시글 -->
+    <section class="home-section">
+      <div class="section-title">
+        <h2>▱ 최근 게시글</h2>
+        <button data-page="archives">
+          전체 보기 →
         </button>
+      </div>
 
-      </section>
-
-    </div>
-
-    <div class="section-title">
-
-      <h2>▱ 최근 게시글</h2>
-
-      <button data-page="archives">
-        전체 보기 →
-      </button>
-
-    </div>
-
-    ${postList(list.slice(0, 4))}
+      ${postList(list.slice(0, 5))}
+    </section>
   `;
 }
 
@@ -425,7 +480,7 @@ function renderAbout() {
     <section class="content-panel">
 
       <h2>
-        안녕하세요, ooxxd입니다.
+        안녕하세요, 김서연(ooxxd) 입니다.
       </h2>
 
       <p>
