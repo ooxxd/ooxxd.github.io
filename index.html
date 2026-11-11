@@ -16,18 +16,23 @@
 <body>
   <div class="app">
 
-    <!-- 왼쪽 메뉴 -->
-    <aside class="sidebar" id="sidebar">
-      <div class="brand">
-        <button id="logo-button" class="logo-button" title="상단 이미지 변경">
-          <img id="logo-img" src="./assets/logo.png"
-               alt="블로그 로고" onerror="this.hidden=true">
-          <span id="logo-placeholder">▣ &gt;_</span>
-        </button>
-        <input type="file" id="logo-upload" accept="image/*" hidden>
-        <h1>Security<br>Note</h1>
-        <p>Development · Security · Study</p>
-      </div>
+   <!-- 왼쪽 메뉴 -->
+<aside class="sidebar" id="sidebar">
+  <div class="brand">
+
+    <!-- 블로그 로고 -->
+    <div class="logo-button">
+      <img id="logo-img"
+           src="./assets/logo.png"
+           alt="블로그 로고">
+      <span id="logo-placeholder" hidden>▣ &gt;_</span>
+    </div>
+
+    <!-- 블로그 이름 -->
+    <h1>Security<br>Note</h1>
+    <p>Development · Security · Study</p>
+
+  </div>
 
       <div class="side-divider"></div>
 
@@ -36,7 +41,6 @@
         <button data-page="about" class="nav-btn">♙ <span>About</span></button>
         <button data-page="archives" class="nav-btn">▤ <span>Archives</span></button>
         <button data-page="tags" class="nav-btn">◇ <span>Tags</span></button>
-        <button data-page="write" class="nav-btn">✎ <span>글쓰기</span></button>
       </nav>
 
       <div class="side-divider"></div>
