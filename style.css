@@ -1,16 +1,16 @@
 
-/* ==================================================
+/* ==========================================
    ooxxd's Security Note
    Brown / Cream / Soft Yellow
    Retro Pixel Blog Theme
-================================================== */
+========================================== */
 
-/* ---------- Fonts ---------- */
-
+/* Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Jua&family=Pixelify+Sans:wght@400;500;600;700&display=swap');
 
-
-/* ---------- Theme Colors ---------- */
+/* ==========================================
+   Colors
+========================================== */
 
 :root {
   --bg: #34271f;
@@ -31,13 +31,15 @@
   --ink: #30231d;
 
   --radius: 14px;
+
   --font-body: "Gowun Dodum", "Malgun Gothic", sans-serif;
   --font-title: "Jua", "Gowun Dodum", sans-serif;
   --font-pixel: "Pixelify Sans", monospace;
 }
 
-
-/* ---------- Global ---------- */
+/* ==========================================
+   Global
+========================================== */
 
 * {
   box-sizing: border-box;
@@ -75,19 +77,17 @@ a {
   text-decoration: none;
 }
 
-[hidden] {
-  display: none !important;
-}
-
 img {
   max-width: 100%;
 }
 
+[hidden] {
+  display: none !important;
+}
+
 button:focus-visible,
 a:focus-visible,
-input:focus-visible,
-textarea:focus-visible,
-select:focus-visible {
+input:focus-visible {
   outline: 2px solid var(--yellow);
   outline-offset: 3px;
 }
@@ -103,18 +103,15 @@ p {
   overflow-wrap: break-word;
 }
 
-
-/* ==================================================
+/* ==========================================
    Main Layout
-================================================== */
+========================================== */
 
 .app {
   display: grid;
 
   grid-template-columns:
-    250px
-    minmax(0, 1fr)
-    305px;
+    250px minmax(0, 1fr) 305px;
 
   gap: 24px;
 
@@ -129,10 +126,19 @@ p {
   min-width: 0;
 }
 
-
-/* ==================================================
+/* ==========================================
    Sidebar
-================================================== */
+========================================== */
+
+/*
+   사이드바는 3부분으로 구성
+
+   1. 상단 땡땡이
+   2. 스크롤 가능한 메뉴
+   3. 하단 땡땡이
+
+   기존 ::before / ::after 장식 사용 안 함
+*/
 
 .sidebar {
   position: sticky;
@@ -144,33 +150,105 @@ p {
   width: 100%;
   height: 100vh;
 
-  padding: 0 16px;
+  padding: 0;
 
   background: var(--sidebar);
   border-right: 1px solid #755f4e;
+
+  overflow: hidden;
+}
+
+/* 기존 체크무늬 완전히 제거 */
+.sidebar::before,
+.sidebar::after {
+  content: none !important;
+  display: none !important;
+}
+
+/* ==========================================
+   Sidebar Dot Pattern
+========================================== */
+
+.sidebar-check {
+  position: relative;
+  z-index: 2;
+
+  display: block;
+  flex: 0 0 55px;
+
+  width: 100%;
+  height: 55px;
+
+  background-color: #6f5040;
+
+  background-image:
+    radial-gradient(
+      circle,
+      #f6e7cf 2.4px,
+      transparent 2.8px
+    );
+
+  background-size: 19px 19px;
+  background-position: center;
+
+  pointer-events: none;
+}
+
+/* 상단 땡땡이 */
+.sidebar-check-top {
+  border-bottom: 2px solid #f7e5cc;
+}
+
+/* 하단 땡땡이 */
+.sidebar-check-bottom {
+  border-top: 2px solid #f7e5cc;
+}
+
+/* ==========================================
+   Sidebar Scroll Area
+========================================== */
+
+/*
+   상단과 하단 땡땡이는 고정
+   이 영역만 스크롤됨
+*/
+
+.sidebar-scroll {
+  flex: 1 1 auto;
+  min-height: 0;
+
+  padding: 22px 16px;
 
   overflow-y: auto;
   overflow-x: hidden;
 
   scrollbar-width: thin;
-  scrollbar-color: #9a806a var(--sidebar);
+  scrollbar-color: #a48a72 transparent;
 }
 
-
-/* ---------- Sidebar Contents ---------- */
-
-.sidebar > * {
-  position: relative;
-  z-index: 1;
+.sidebar-scroll::-webkit-scrollbar {
+  width: 5px;
 }
+
+.sidebar-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sidebar-scroll::-webkit-scrollbar-thumb {
+  background: #a48a72;
+  border-radius: 10px;
+}
+
+/* ==========================================
+   Sidebar Brand
+========================================== */
 
 .brand {
   text-align: center;
   padding: 0 2px;
 }
 
-
-/* Sidebar Image */
+/* 폴더 터미널 아이콘 영역 */
 
 .logo-button {
   display: grid;
@@ -182,29 +260,24 @@ p {
   margin: 0 auto 12px;
   padding: 0;
 
-  border: 0;
   background: transparent;
+  border: 0;
 
   color: var(--yellow);
-  font-size: 30px;
 }
 
-.logo-button img {
+/* 폴더 안에 >_ 모양 */
+
+.folder-terminal-icon {
   display: block;
 
-  max-width: 76px;
-  max-height: 76px;
+  width: 58px;
+  height: 52px;
 
-  object-fit: contain;
+  color: var(--yellow);
 }
 
-#logo-placeholder {
-  font-family: var(--font-pixel);
-  font-size: 25px;
-}
-
-
-/* Sidebar Title */
+/* 블로그 제목 */
 
 .brand h1 {
   margin: 8px 0 14px;
@@ -219,6 +292,8 @@ p {
   color: var(--text);
 }
 
+/* 블로그 설명 */
+
 .brand p {
   margin: 0 0 24px;
 
@@ -228,21 +303,21 @@ p {
   line-height: 1.7;
 }
 
-
-/* Divider */
+/* ==========================================
+   Sidebar Divider
+========================================== */
 
 .side-divider {
   height: 1px;
-  flex: 0 0 1px;
 
   margin: 22px 0;
 
-  border-top:
-    1px dashed var(--border);
+  border-top: 1px dashed var(--border);
 }
 
-
-/* ---------- Main Navigation ---------- */
+/* ==========================================
+   Main Navigation
+========================================== */
 
 .main-nav {
   display: flex;
@@ -286,15 +361,13 @@ p {
   color: var(--ink);
 }
 
-
-/* ---------- Categories ---------- */
+/* ==========================================
+   Categories
+========================================== */
 
 .category-menu {
   display: flex;
   flex-direction: column;
-
-  position: relative;
-  z-index: 2;
 
   gap: 6px;
   width: 100%;
@@ -304,8 +377,7 @@ p {
   margin: 0 0 13px;
   padding-bottom: 11px;
 
-  border-bottom:
-    1px solid var(--border);
+  border-bottom: 1px solid var(--border);
 
   font-family: var(--font-title);
   font-size: 17px;
@@ -348,16 +420,18 @@ p {
   color: var(--ink);
 }
 
-
-/* Sidebar Footer */
+/* ==========================================
+   Sidebar Footer
+========================================== */
 
 .side-footer {
   display: flex;
   flex-direction: column;
 
   gap: 8px;
-  margin-top: auto;
-  padding-top: 30px;
+
+  margin-top: 30px;
+  padding: 12px 0 16px;
 
   color: var(--yellow);
   font-size: 12px;
@@ -367,31 +441,15 @@ p {
   color: var(--sub);
 }
 
+/* 예전 도트 장식 제거 */
 .side-footer > span,
 .sidebar-dots {
   display: none;
 }
 
-
-/* Sidebar Scrollbar */
-
-.sidebar::-webkit-scrollbar {
-  width: 5px;
-}
-
-.sidebar::-webkit-scrollbar-track {
-  background: var(--sidebar);
-}
-
-.sidebar::-webkit-scrollbar-thumb {
-  background: #a48a72;
-  border-radius: 10px;
-}
-
-
-/* ==================================================
+/* ==========================================
    Topbar
-================================================== */
+========================================== */
 
 .topbar {
   display: flex;
@@ -457,7 +515,6 @@ p {
 .text-link {
   border: 0;
   background: transparent;
-
   color: var(--text);
 }
 
@@ -469,10 +526,9 @@ p {
   display: none;
 }
 
-
-/* ==================================================
+/* ==========================================
    Retro Window
-================================================== */
+========================================== */
 
 .window {
   margin-bottom: 20px;
@@ -496,18 +552,16 @@ p {
   background: var(--panel);
   color: var(--text);
 
-  border-bottom:
-    1px solid var(--border);
+  border-bottom: 1px solid var(--border);
 
   font-family: var(--font-pixel);
   font-size: 14px;
   line-height: 1.5;
 }
 
-
-/* ==================================================
-   Welcome / Hero
-================================================== */
+/* ==========================================
+   Hero / Welcome
+========================================== */
 
 .hero {
   background: var(--cream);
@@ -527,7 +581,7 @@ p {
   padding: 34px 38px 44px;
 }
 
-/* Decorative Dots */
+/* 오른쪽 하단 도트 장식 */
 
 .hero-content::after {
   content: "";
@@ -558,8 +612,7 @@ p {
   pointer-events: none;
 }
 
-
-/* Main Pixel Title */
+/* 픽셀 제목 */
 
 .hero h1 {
   position: relative;
@@ -596,7 +649,6 @@ p {
   margin: 0;
 }
 
-
 /* Hero Buttons */
 
 .actions {
@@ -616,7 +668,6 @@ p {
   z-index: 1;
 
   gap: 8px;
-
   padding: 10px 19px;
 
   border: 1px solid var(--ink);
@@ -625,7 +676,6 @@ p {
   background: transparent;
   color: var(--ink);
 
-  font-family: var(--font-body);
   font-weight: 700;
   font-size: 14px;
 
@@ -643,10 +693,9 @@ p {
   transform: translateY(-2px);
 }
 
-
-/* ==================================================
-   Common Section Title
-================================================== */
+/* ==========================================
+   Section Title
+========================================== */
 
 .section-title {
   display: flex;
@@ -658,8 +707,7 @@ p {
   margin-bottom: 16px;
   padding: 7px 0 11px;
 
-  border-bottom:
-    1px solid var(--border);
+  border-bottom: 1px solid var(--border);
 }
 
 .section-title h2 {
@@ -682,17 +730,15 @@ p {
   color: var(--yellow);
 }
 
-
-/* ==================================================
+/* ==========================================
    Home Dashboard
-================================================== */
+========================================== */
 
 .home-section {
   margin: 27px 0 35px;
 }
 
-
-/* ---------- Statistics ---------- */
+/* 학습 통계 */
 
 .home-stats {
   display: grid;
@@ -707,7 +753,6 @@ p {
   flex-direction: column;
 
   gap: 8px;
-
   padding: 22px 18px;
 
   background: var(--panel2);
@@ -729,8 +774,7 @@ p {
   font-size: 13px;
 }
 
-
-/* ---------- Category Cards ---------- */
+/* 카테고리 카드 */
 
 .home-category-grid {
   display: grid;
@@ -786,8 +830,7 @@ p {
   color: #765b46;
 }
 
-
-/* ---------- Older Dashboard Compatibility ---------- */
+/* 이전 대시보드 구조 호환 */
 
 .dashboard-grid {
   display: grid;
@@ -830,10 +873,9 @@ p {
   color: var(--sub);
 }
 
-
-/* ==================================================
+/* ==========================================
    Study Calendar
-================================================== */
+========================================== */
 
 .home-calendar-wrap {
   margin-top: 15px;
@@ -931,10 +973,9 @@ p {
   min-height: 39px;
 }
 
-
-/* ==================================================
+/* ==========================================
    Post Cards
-================================================== */
+========================================== */
 
 .post-card {
   display: flex;
@@ -1039,10 +1080,9 @@ p {
   text-align: center;
 }
 
-
-/* ==================================================
+/* ==========================================
    Right Widgets
-================================================== */
+========================================== */
 
 .widgets {
   min-width: 0;
@@ -1052,6 +1092,8 @@ p {
 .widget-content {
   padding: 20px;
 }
+
+/* 프로필 */
 
 .profile-row {
   display: flex;
@@ -1118,8 +1160,7 @@ p {
   margin-top: 20px;
   padding-top: 15px;
 
-  border-top:
-    1px dashed var(--border);
+  border-top: 1px dashed var(--border);
 
   font-size: 13px;
 }
@@ -1128,6 +1169,8 @@ p {
 .profile-links button:hover {
   color: var(--yellow);
 }
+
+/* 태그 */
 
 .widget-tags {
   display: flex;
@@ -1164,10 +1207,9 @@ p {
   font-size: 12px;
 }
 
-
-/* ==================================================
-   About / Archives / Tags Pages
-================================================== */
+/* ==========================================
+   About / Archives / Tags
+========================================== */
 
 .page-heading {
   margin: 12px 0 26px;
@@ -1222,23 +1264,11 @@ p {
   text-decoration: underline;
 }
 
-.content-panel .tag-button {
-  color: var(--ink);
-  border-color: #8d715c;
-}
-
-.content-panel .tag-button:hover {
-  background: var(--yellow);
-}
-
 .tag-cloud {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
 }
-
-
-/* ---------- Common Action Button ---------- */
 
 .action-button {
   display: inline-flex;
@@ -1261,10 +1291,9 @@ p {
   background: var(--yellow-hover);
 }
 
-
-/* ==================================================
+/* ==========================================
    Markdown Post Page
-================================================== */
+========================================== */
 
 .post-page {
   margin: 0;
@@ -1291,8 +1320,7 @@ p {
 .post-sidebar {
   padding: 35px 20px;
 
-  border-right:
-    1px solid #776253;
+  border-right: 1px solid #776253;
 }
 
 .post-sidebar h2 {
@@ -1396,7 +1424,6 @@ p {
   padding: 5px 12px;
 
   background: var(--yellow);
-
   border-radius: 999px;
 
   color: var(--ink);
@@ -1422,8 +1449,7 @@ p {
   margin-top: 40px;
   padding-bottom: 10px;
 
-  border-bottom:
-    1px solid #ddcdb4;
+  border-bottom: 1px solid #ddcdb4;
 }
 
 .post-markdown pre {
@@ -1499,10 +1525,9 @@ p {
   border: 1px solid #cbbda6;
 }
 
-
-/* ==================================================
+/* ==========================================
    Light Theme
-================================================== */
+========================================== */
 
 body.light {
   --bg: #f7f0e2;
@@ -1527,10 +1552,6 @@ body.light .widgets {
 body.light .window-bar {
   background: #654b3b;
   color: #fff5dc;
-}
-
-body.light .hero .window-bar {
-  background: #654b3b;
 }
 
 body.light .hero {
@@ -1559,10 +1580,6 @@ body.light .calendar-day.heading {
   color: #705949;
 }
 
-body.light .post-sidebar {
-  color: var(--ink);
-}
-
 body.light .post-sidebar a {
   color: var(--ink);
 }
@@ -1571,14 +1588,9 @@ body.light .post-back {
   color: #785027;
 }
 
-body.light .side-note {
-  color: var(--sub);
-}
-
-
-/* ==================================================
+/* ==========================================
    Tablet
-================================================== */
+========================================== */
 
 @media (max-width: 1200px) {
 
@@ -1619,10 +1631,9 @@ body.light .side-note {
 
 }
 
-
-/* ==================================================
+/* ==========================================
    Mobile
-================================================== */
+========================================== */
 
 @media (max-width: 760px) {
 
@@ -1631,16 +1642,17 @@ body.light .side-note {
     padding: 12px;
   }
 
+  /* 모바일 사이드바 */
+
   .sidebar {
     display: none;
 
     position: fixed;
     top: 0;
     left: 0;
-    bottom: 0;
 
     width: 270px;
-    height: 100vh;
+    height: 100dvh;
 
     z-index: 50;
 
@@ -1652,11 +1664,18 @@ body.light .side-note {
     display: flex;
   }
 
-  .sidebar::before,
-  .sidebar::after {
-    flex-basis: 44px;
+  /* 모바일 땡땡이 */
+
+  .sidebar-check {
+    flex: 0 0 44px;
     height: 44px;
   }
+
+  .sidebar-scroll {
+    padding: 18px 16px;
+  }
+
+  /* 상단 */
 
   .mobile-menu {
     display: block;
@@ -1675,6 +1694,8 @@ body.light .side-note {
   .search-wrap {
     flex: 1;
   }
+
+  /* 메인 소개 */
 
   .hero-content {
     padding: 26px 20px 36px;
@@ -1700,6 +1721,8 @@ body.light .side-note {
     font-size: 12px;
     padding: 9px 14px;
   }
+
+  /* Home */
 
   .dashboard-grid {
     grid-template-columns: 1fr;
@@ -1730,6 +1753,8 @@ body.light .side-note {
     padding: 15px;
   }
 
+  /* Calendar */
+
   .home-calendar-wrap .dashboard-card {
     padding: 14px;
   }
@@ -1744,6 +1769,8 @@ body.light .side-note {
     padding: 5px 0;
     min-height: 30px;
   }
+
+  /* Posts */
 
   .post-card {
     gap: 10px;
@@ -1761,6 +1788,8 @@ body.light .side-note {
     font-size: 16px;
   }
 
+  /* Widgets */
+
   .widgets {
     display: block;
     padding-top: 20px;
@@ -1770,6 +1799,8 @@ body.light .side-note {
     margin-bottom: 16px;
   }
 
+  /* Other Pages */
+
   .content-panel {
     padding: 22px 18px;
   }
@@ -1777,6 +1808,8 @@ body.light .side-note {
   .page-heading h1 {
     font-size: 26px;
   }
+
+  /* Markdown Page */
 
   .post-layout {
     display: block;
@@ -1787,8 +1820,7 @@ body.light .side-note {
     padding: 15px;
 
     border-right: 0;
-    border-bottom:
-      1px solid var(--border);
+    border-bottom: 1px solid var(--border);
   }
 
   .post-sidebar nav {
@@ -1810,10 +1842,9 @@ body.light .side-note {
 
 }
 
-
-/* ==================================================
+/* ==========================================
    Reduced Motion
-================================================== */
+========================================== */
 
 @media (prefers-reduced-motion: reduce) {
 
@@ -1825,212 +1856,4 @@ body.light .side-note {
     scroll-behavior: auto !important;
   }
 
-}
-
-
-/* ========================================
-   Sidebar - Fixed Check Pattern
-   기존 색상과 메뉴 디자인 유지
-======================================== */
-
-/* 사이드바 기준점 */
-.sidebar {
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  overflow-y: auto;
-  overflow-x: hidden;
-
-  /* 상하단 체크무늬 영역 확보 */
-  padding-top: 65px;
-  padding-bottom: 65px;
-}
-
-/* 체크무늬 공통 */
-.sidebar::before,
-.sidebar::after {
-  content: "";
-  position: sticky;
-
-  display: block;
-  flex-shrink: 0;
-
-  width: calc(100% + 32px);
-  height: 55px;
-
-  margin-left: -16px;
-  margin-right: -16px;
-
-  background-color: #8d6c57;
-  background-image:
-    conic-gradient(
-      #cfb8a4 25%,
-      #775744 0 50%,
-      #cfb8a4 0 75%,
-      #775744 0
-    );
-
-  background-size: 24px 24px;
-
-  z-index: 10;
-  pointer-events: none;
-  mask-image: none;
-}
-
-/* 위쪽 체크무늬 */
-.sidebar::before {
-  top: 0;
-  margin-top: -65px;
-
-  /* 아래쪽 물결 테두리 */
-  border-bottom: 3px solid #fff1dd;
-  border-radius: 0 0 12px 12px;
-}
-
-/* 아래쪽 체크무늬 */
-.sidebar::after {
-  bottom: 0;
-  margin-bottom: -65px;
-
-  /* 위쪽 물결 테두리 */
-  border-top: 3px solid #fff1dd;
-  border-radius: 12px 12px 0 0;
-}
-
-/* 메뉴가 장식과 겹치지 않도록 */
-.sidebar > .brand,
-.sidebar > .main-nav,
-.sidebar > .category-menu,
-.sidebar > .side-divider,
-.sidebar > .side-footer {
-  position: relative;
-  z-index: 1;
-}
-
-/* 폴더 터미널 아이콘 */
-.folder-terminal-icon {
-  display: block;
-  width: 58px;
-  height: 52px;
-  color: var(--yellow);
-}
-
-/* 기존 로고 영역 크기 유지 */
-.logo-button {
-  display: grid;
-  place-items: center;
-  width: 78px;
-  height: 78px;
-  margin: 0 auto 12px;
-  padding: 0;
-  border: 0;
-  background: transparent;
-}
-
-
-/* 반복되는 얇은 물결 테두리 */
-.sidebar::before {
-  border-bottom: 0;
-  border-radius: 0;
-
-  background-image:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='12' viewBox='0 0 24 12'%3E%3Cpath d='M0 2 Q6 12 12 2 Q18 12 24 2' fill='none' stroke='%23fff1dd' stroke-width='2'/%3E%3C/svg%3E"),
-    conic-gradient(
-      #cfb8a4 25%,
-      #775744 0 50%,
-      #cfb8a4 0 75%,
-      #775744 0
-    );
-
-  background-size:
-    24px 12px,
-    24px 24px;
-
-  background-position:
-    left bottom,
-    left top;
-
-  background-repeat:
-    repeat-x,
-    repeat;
-}
-
-/* 하단 물결 테두리 */
-.sidebar::after {
-  border-top: 0;
-  border-radius: 0;
-
-  background-image:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='12' viewBox='0 0 24 12'%3E%3Cpath d='M0 10 Q6 0 12 10 Q18 0 24 10' fill='none' stroke='%23fff1dd' stroke-width='2'/%3E%3C/svg%3E"),
-    conic-gradient(
-      #cfb8a4 25%,
-      #775744 0 50%,
-      #cfb8a4 0 75%,
-      #775744 0
-    );
-
-  background-size:
-    24px 12px,
-    24px 24px;
-
-  background-position:
-    left top,
-    left top;
-
-  background-repeat:
-    repeat-x,
-    repeat;
-}
-
-
-/* 사이드바 전체 */
-.sidebar {
-  position: sticky;
-  top: 0;
-  height: 100vh;
-
-  display: flex;
-  flex-direction: column;
-
-  padding: 0;
-  overflow: hidden;
-
-  background: var(--sidebar);
-}
-
-/* 상단·하단 체크무늬 공통 */
-.sidebar-check {
-  flex: 0 0 55px;
-  width: 100%;
-  height: 55px;
-
-  background-repeat: repeat-x;
-  background-position: center;
-  background-size: auto 55px;
-
-  pointer-events: none;
-}
-
-/* 상단 체크무늬 */
-.sidebar-check-top {
-  background-image: url("./assets/check-top.png");
-}
-
-/* 하단 체크무늬 */
-.sidebar-check-bottom {
-  background-image: url("./assets/check-bottom.png");
-}
-
-/* 가운데 메뉴 영역만 스크롤 */
-.sidebar-scroll {
-  flex: 1;
-  min-height: 0;
-
-  padding: 20px 16px;
-
-  overflow-y: auto;
-  overflow-x: hidden;
-
-  scrollbar-width: thin;
-  scrollbar-color: #a48a72 transparent;
 }
