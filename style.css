@@ -153,15 +153,56 @@ p {
   scrollbar-width: thin;
 }
 
+/* 사이드바 상단/하단: 도트 대신 소수의 하트·클로버 포인트 */
 .sidebar-dots {
+  position: relative;
   width: 100%;
   height: 68px;
   flex-shrink: 0;
-  background-image: radial-gradient(circle, #f6e7cf 2.1px, transparent 2.45px);
-  background-size: 18px 18px;
-  background-position: center;
-  opacity: 0.7;
+  background: none;
+  opacity: 1;
   pointer-events: none;
+}
+
+.sidebar-dots::before,
+.sidebar-dots::after {
+  position: absolute;
+  color: #f6e7cf;
+  line-height: 1;
+  opacity: 0.82;
+  pointer-events: none;
+}
+
+/* 상단: 서로 높이와 위치가 다른 작은 포인트 */
+.sidebar-dots:first-child::before {
+  content: "♥";
+  top: 14px;
+  left: 17%;
+  font-size: 15px;
+  transform: rotate(-16deg);
+}
+.sidebar-dots:first-child::after {
+  content: "♣";
+  top: 34px;
+  right: 21%;
+  font-size: 19px;
+  transform: rotate(18deg);
+}
+
+/* 하단: 상단과 다른 비대칭 배치 */
+.sidebar-dots:last-child::before {
+  content: "♣";
+  top: 24px;
+  left: 30%;
+  font-size: 16px;
+  transform: rotate(-23deg);
+}
+.sidebar-dots:last-child::after {
+  content: "♥";
+  top: 9px;
+  right: 13%;
+  font-size: 18px;
+  transform: rotate(13deg);
 }
 
 .sidebar-dots:first-child {
@@ -1548,7 +1589,7 @@ body.light .post-back {
 
 
 /* ---------- Background accents / 2026-11 update ---------- */
-/* 기존 사이드바의 위아래 도트(.sidebar-dots)는 변경하지 않음. */
+/* 사이드바의 도트는 제거하고 하트·클로버를 드문드문 배치함. */
 /* 밝은 테마의 배경 장식만 진한 베이지로 조정 */
 body.light {
   background-image:
