@@ -129,52 +129,41 @@ p {
   box-shadow: var(--shadow);
 }
 
-/*
-   한 장의 CSS 도트 배경을 네 모서리에서만 보이게 마스킹합니다.
-   실제 HTML 띠 요소가 없고 클릭도 받지 않으므로 메뉴와 겹치지 않습니다.
-*/
-.sidebar::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background-image: radial-gradient(circle, #f6e7cf 2.1px, transparent 2.45px);
-  background-position: 1px 1px;
-  background-size: 18px 18px;
-  opacity: 0.7;
-  pointer-events: none;
-
-  -webkit-mask-image:
-    linear-gradient(#000 0 0),
-    linear-gradient(#000 0 0),
-    linear-gradient(#000 0 0),
-    linear-gradient(#000 0 0);
-  -webkit-mask-position: left top, right top, left bottom, right bottom;
-  -webkit-mask-repeat: no-repeat;
-  -webkit-mask-size: 108px 68px;
-
-  mask-image:
-    linear-gradient(#000 0 0),
-    linear-gradient(#000 0 0),
-    linear-gradient(#000 0 0),
-    linear-gradient(#000 0 0);
-  mask-position: left top, right top, left bottom, right bottom;
-  mask-repeat: no-repeat;
-  mask-size: 108px 68px;
+/* 위아래 땡땡이 무늬는 메뉴와 함께 스크롤되는 실제 요소입니다. */
+.sidebar::before,
+.sidebar::after {
+  content: none;
 }
 
-/* 모서리 도트와 실제 메뉴 사이에 항상 안전 여백을 둡니다. */
 .sidebar-scroll {
   position: relative;
-  z-index: 1;
   height: 100%;
-  padding: 88px 16px;
+  padding: 0 16px;
   overflow-x: hidden;
   overflow-y: auto;
   overscroll-behavior: contain;
   scrollbar-gutter: stable;
   scrollbar-color: #a48a72 transparent;
   scrollbar-width: thin;
+}
+
+.sidebar-dots {
+  width: 100%;
+  height: 68px;
+  flex-shrink: 0;
+  background-image: radial-gradient(circle, #f6e7cf 2.1px, transparent 2.45px);
+  background-size: 18px 18px;
+  background-position: center;
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.sidebar-dots:first-child {
+  margin-bottom: 20px;
+}
+
+.sidebar-dots:last-child {
+  margin-top: 20px;
 }
 
 .sidebar-scroll::-webkit-scrollbar {
@@ -1348,13 +1337,12 @@ body.light .post-back {
     display: block;
   }
 
-  .sidebar::before {
-    -webkit-mask-size: 94px 60px;
-    mask-size: 94px 60px;
+  .sidebar-dots {
+    height: 60px;
   }
 
   .sidebar-scroll {
-    padding: 76px 16px;
+    padding: 0 16px;
   }
 
   .mobile-menu {
@@ -1569,106 +1557,5 @@ body.light .post-back {
   .sidebar::before,
   .hero-content::after {
     display: none;
-  }
-}
-
-
-/* ==========================================
-   사이드바 땡땡이 무늬와 글씨 겹침 방지
-========================================== */
-
-/* 사이드바 전체 */
-.sidebar {
-  position: sticky;
-  overflow: hidden;
-  isolation: isolate;
-}
-
-/* 상단과 하단 고정 땡땡이 무늬 */
-.sidebar::before,
-.sidebar::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  height: 68px;
-  z-index: 3;
-
-  background-color: var(--sidebar);
-  background-image: radial-gradient(
-    circle,
-    #f6e7cf 2.1px,
-    transparent 2.45px
-  );
-  background-size: 18px 18px;
-  background-position: 1px 1px;
-
-  /* 기존 모서리 마스크 초기화 */
-  -webkit-mask-image: none;
-  mask-image: none;
-  pointer-events: none;
-}
-
-/* 상단 무늬 */
-.sidebar::before {
-  top: 0;
-  -webkit-mask-image: linear-gradient(
-    to right,
-    #000 0 42%,
-    transparent 42% 58%,
-    #000 58% 100%
-  );
-  mask-image: linear-gradient(
-    to right,
-    #000 0 42%,
-    transparent 42% 58%,
-    #000 58% 100%
-  );
-}
-
-/* 하단 무늬 */
-.sidebar::after {
-  bottom: 0;
-  -webkit-mask-image: linear-gradient(
-    to right,
-    #000 0 42%,
-    transparent 42% 58%,
-    #000 58% 100%
-  );
-  mask-image: linear-gradient(
-    to right,
-    #000 0 42%,
-    transparent 42% 58%,
-    #000 58% 100%
-  );
-}
-
-/* 메뉴는 무늬 사이 공간에서만 스크롤 */
-.sidebar-scroll {
-  position: absolute;
-  top: 68px;
-  bottom: 68px;
-  left: 0;
-  right: 0;
-
-  height: auto;
-  padding: 20px 16px;
-
-  overflow-x: hidden;
-  overflow-y: auto;
-  z-index: 1;
-}
-
-/* 모바일 화면 */
-@media (max-width: 760px) {
-  .sidebar::before,
-  .sidebar::after {
-    height: 60px;
-  }
-
-  .sidebar-scroll {
-    top: 60px;
-    bottom: 60px;
-    padding: 16px;
   }
 }
