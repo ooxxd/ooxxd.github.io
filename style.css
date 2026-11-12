@@ -1571,3 +1571,104 @@ body.light .post-back {
     display: none;
   }
 }
+
+
+/* ==========================================
+   사이드바 땡땡이 무늬와 글씨 겹침 방지
+========================================== */
+
+/* 사이드바 전체 */
+.sidebar {
+  position: sticky;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* 상단과 하단 고정 땡땡이 무늬 */
+.sidebar::before,
+.sidebar::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 68px;
+  z-index: 3;
+
+  background-color: var(--sidebar);
+  background-image: radial-gradient(
+    circle,
+    #f6e7cf 2.1px,
+    transparent 2.45px
+  );
+  background-size: 18px 18px;
+  background-position: 1px 1px;
+
+  /* 기존 모서리 마스크 초기화 */
+  -webkit-mask-image: none;
+  mask-image: none;
+  pointer-events: none;
+}
+
+/* 상단 무늬 */
+.sidebar::before {
+  top: 0;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    #000 0 42%,
+    transparent 42% 58%,
+    #000 58% 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    #000 0 42%,
+    transparent 42% 58%,
+    #000 58% 100%
+  );
+}
+
+/* 하단 무늬 */
+.sidebar::after {
+  bottom: 0;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    #000 0 42%,
+    transparent 42% 58%,
+    #000 58% 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    #000 0 42%,
+    transparent 42% 58%,
+    #000 58% 100%
+  );
+}
+
+/* 메뉴는 무늬 사이 공간에서만 스크롤 */
+.sidebar-scroll {
+  position: absolute;
+  top: 68px;
+  bottom: 68px;
+  left: 0;
+  right: 0;
+
+  height: auto;
+  padding: 20px 16px;
+
+  overflow-x: hidden;
+  overflow-y: auto;
+  z-index: 1;
+}
+
+/* 모바일 화면 */
+@media (max-width: 760px) {
+  .sidebar::before,
+  .sidebar::after {
+    height: 60px;
+  }
+
+  .sidebar-scroll {
+    top: 60px;
+    bottom: 60px;
+    padding: 16px;
+  }
+}
