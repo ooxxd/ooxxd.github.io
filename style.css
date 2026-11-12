@@ -46,15 +46,14 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  /* 일정한 도트 배경 위에 소수의 하트·클로버를 불규칙한 위치에 배치 */
-  background-color: var(--bg);
+  /* 참고 이미지: 브라운 바탕 + 연분홍색 교차 배열 도트 */
+  background-color: #544540;
   background-image:
-    url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22880%22%20height%3D%22760%22%20viewBox%3D%220%200%20880%20760%22%3E%3Cg%20fill%3D%22%23ffe2a0%22%20fill-opacity%3D%22.65%22%3E%3Cg%20transform%3D%22translate%2865%2094%29%20rotate%28-14%29%20scale%280.85%29%22%3E%3Cpath%20d%3D%22M0%208%20C-18%20-3%20-17%20-19%20-4%20-18%20C1%20-18%205%20-14%207%20-10%20C14%20-23%2029%20-17%2026%20-3%20C24%207%209%2018%207%2020%20C5%2018%203%2013%200%208Z%22%2F%3E%3C%2Fg%3E%3Cg%20transform%3D%22translate%28402%2064%29%20rotate%2819%29%20scale%280.8%29%22%3E%3Ccircle%20cx%3D%22-5%22%20cy%3D%22-8%22%20r%3D%228%22%2F%3E%3Ccircle%20cx%3D%229%22%20cy%3D%22-8%22%20r%3D%228%22%2F%3E%3Ccircle%20cx%3D%222%22%20cy%3D%223%22%20r%3D%228%22%2F%3E%3Cpath%20d%3D%22M3%208%20Q10%2019%2011%2026%22%20fill%3D%22none%22%20stroke%3D%22%23ffe2a0%22%20stroke-width%3D%223%22%20stroke-linecap%3D%22round%22%2F%3E%3C%2Fg%3E%3Cg%20transform%3D%22translate%28722%20231%29%20rotate%2811%29%20scale%281.05%29%22%3E%3Cpath%20d%3D%22M0%208%20C-18%20-3%20-17%20-19%20-4%20-18%20C1%20-18%205%20-14%207%20-10%20C14%20-23%2029%20-17%2026%20-3%20C24%207%209%2018%207%2020%20C5%2018%203%2013%200%208Z%22%2F%3E%3C%2Fg%3E%3Cg%20transform%3D%22translate%28166%20376%29%20rotate%28-13%29%20scale%280.95%29%22%3E%3Ccircle%20cx%3D%22-5%22%20cy%3D%22-8%22%20r%3D%228%22%2F%3E%3Ccircle%20cx%3D%229%22%20cy%3D%22-8%22%20r%3D%228%22%2F%3E%3Ccircle%20cx%3D%222%22%20cy%3D%223%22%20r%3D%228%22%2F%3E%3Cpath%20d%3D%22M3%208%20Q10%2019%2011%2026%22%20fill%3D%22none%22%20stroke%3D%22%23ffe2a0%22%20stroke-width%3D%223%22%20stroke-linecap%3D%22round%22%2F%3E%3C%2Fg%3E%3Cg%20transform%3D%22translate%28537%20493%29%20rotate%2816%29%20scale%280.72%29%22%3E%3Cpath%20d%3D%22M0%208%20C-18%20-3%20-17%20-19%20-4%20-18%20C1%20-18%205%20-14%207%20-10%20C14%20-23%2029%20-17%2026%20-3%20C24%207%209%2018%207%2020%20C5%2018%203%2013%200%208Z%22%2F%3E%3C%2Fg%3E%3Cg%20transform%3D%22translate%28787%20666%29%20rotate%28-9%29%20scale%280.9%29%22%3E%3Ccircle%20cx%3D%22-5%22%20cy%3D%22-8%22%20r%3D%228%22%2F%3E%3Ccircle%20cx%3D%229%22%20cy%3D%22-8%22%20r%3D%228%22%2F%3E%3Ccircle%20cx%3D%222%22%20cy%3D%223%22%20r%3D%228%22%2F%3E%3Cpath%20d%3D%22M3%208%20Q10%2019%2011%2026%22%20fill%3D%22none%22%20stroke%3D%22%23ffe2a0%22%20stroke-width%3D%223%22%20stroke-linecap%3D%22round%22%2F%3E%3C%2Fg%3E%3Cg%20transform%3D%22translate%28311%20698%29%20rotate%28-18%29%20scale%280.95%29%22%3E%3Cpath%20d%3D%22M0%208%20C-18%20-3%20-17%20-19%20-4%20-18%20C1%20-18%205%20-14%207%20-10%20C14%20-23%2029%20-17%2026%20-3%20C24%207%209%2018%207%2020%20C5%2018%203%2013%200%208Z%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E"),
-    radial-gradient(circle, rgb(255 232 160 / 28%) 2.5px, transparent 3px),
-    radial-gradient(circle at 82% 8%, rgb(255 232 160 / 5%), transparent 28rem);
-  background-size: 880px 760px, 29px 29px, auto;
-  background-repeat: repeat, repeat, no-repeat;
-  background-attachment: fixed, fixed, fixed;
+    radial-gradient(circle at 4px 4px, #f8ccd1 4.8px, transparent 5.2px),
+    radial-gradient(circle at 23.5px 25px, #f8ccd1 4.8px, transparent 5.2px);
+  background-size: 39px 42px;
+  background-repeat: repeat;
+  background-attachment: fixed;
   color: var(--text);
   font-family: var(--font-body);
   font-size: 15px;
@@ -153,64 +152,12 @@ p {
   scrollbar-width: thin;
 }
 
-/* 사이드바 상단/하단: 도트 대신 소수의 하트·클로버 포인트 */
-.sidebar-dots {
-  position: relative;
-  width: 100%;
-  height: 68px;
-  flex-shrink: 0;
-  background: none;
-  opacity: 1;
-  pointer-events: none;
-}
-
+/* 과거에 추가한 사이드바 장식 요소는 빈 공간 없이 숨깁니다. */
+.sidebar-dots,
 .sidebar-dots::before,
 .sidebar-dots::after {
-  position: absolute;
-  color: #f6e7cf;
-  line-height: 1;
-  opacity: 0.82;
-  pointer-events: none;
-}
-
-/* 상단: 서로 높이와 위치가 다른 작은 포인트 */
-.sidebar-dots:first-child::before {
-  content: "♥";
-  top: 14px;
-  left: 17%;
-  font-size: 15px;
-  transform: rotate(-16deg);
-}
-.sidebar-dots:first-child::after {
-  content: "♣";
-  top: 34px;
-  right: 21%;
-  font-size: 19px;
-  transform: rotate(18deg);
-}
-
-/* 하단: 상단과 다른 비대칭 배치 */
-.sidebar-dots:last-child::before {
-  content: "♣";
-  top: 24px;
-  left: 30%;
-  font-size: 16px;
-  transform: rotate(-23deg);
-}
-.sidebar-dots:last-child::after {
-  content: "♥";
-  top: 9px;
-  right: 13%;
-  font-size: 18px;
-  transform: rotate(13deg);
-}
-
-.sidebar-dots:first-child {
-  margin-bottom: 20px;
-}
-
-.sidebar-dots:last-child {
-  margin-top: 20px;
+  display: none !important;
+  content: none !important;
 }
 
 .sidebar-scroll::-webkit-scrollbar {
@@ -1384,9 +1331,6 @@ body.light .post-back {
     display: block;
   }
 
-  .sidebar-dots {
-    height: 60px;
-  }
 
   .sidebar-scroll {
     padding: 0 16px;
@@ -1588,14 +1532,15 @@ body.light .post-back {
 }
 
 
-/* ---------- Background accents / 2026-11 update ---------- */
-/* 사이드바 하트·클로버는 유지하며, 페이지 배경의 장식은 불규칙하게 드문드문 배치함. */
-/* 밝은 테마의 배경 장식만 진한 베이지로 조정 */
+/* 라이트 테마에서도 같은 교차 도트를 사용합니다. */
 body.light {
+  background-color: #544540;
   background-image:
-    url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22880%22%20height%3D%22760%22%20viewBox%3D%220%200%20880%20760%22%3E%3Cg%20fill%3D%22%239a7956%22%20fill-opacity%3D%22.65%22%3E%3Cg%20transform%3D%22translate%2865%2094%29%20rotate%28-14%29%20scale%280.85%29%22%3E%3Cpath%20d%3D%22M0%208%20C-18%20-3%20-17%20-19%20-4%20-18%20C1%20-18%205%20-14%207%20-10%20C14%20-23%2029%20-17%2026%20-3%20C24%207%209%2018%207%2020%20C5%2018%203%2013%200%208Z%22%2F%3E%3C%2Fg%3E%3Cg%20transform%3D%22translate%28402%2064%29%20rotate%2819%29%20scale%280.8%29%22%3E%3Ccircle%20cx%3D%22-5%22%20cy%3D%22-8%22%20r%3D%228%22%2F%3E%3Ccircle%20cx%3D%229%22%20cy%3D%22-8%22%20r%3D%228%22%2F%3E%3Ccircle%20cx%3D%222%22%20cy%3D%223%22%20r%3D%228%22%2F%3E%3Cpath%20d%3D%22M3%208%20Q10%2019%2011%2026%22%20fill%3D%22none%22%20stroke%3D%22%239a7956%22%20stroke-width%3D%223%22%20stroke-linecap%3D%22round%22%2F%3E%3C%2Fg%3E%3Cg%20transform%3D%22translate%28722%20231%29%20rotate%2811%29%20scale%281.05%29%22%3E%3Cpath%20d%3D%22M0%208%20C-18%20-3%20-17%20-19%20-4%20-18%20C1%20-18%205%20-14%207%20-10%20C14%20-23%2029%20-17%2026%20-3%20C24%207%209%2018%207%2020%20C5%2018%203%2013%200%208Z%22%2F%3E%3C%2Fg%3E%3Cg%20transform%3D%22translate%28166%20376%29%20rotate%28-13%29%20scale%280.95%29%22%3E%3Ccircle%20cx%3D%22-5%22%20cy%3D%22-8%22%20r%3D%228%22%2F%3E%3Ccircle%20cx%3D%229%22%20cy%3D%22-8%22%20r%3D%228%22%2F%3E%3Ccircle%20cx%3D%222%22%20cy%3D%223%22%20r%3D%228%22%2F%3E%3Cpath%20d%3D%22M3%208%20Q10%2019%2011%2026%22%20fill%3D%22none%22%20stroke%3D%22%239a7956%22%20stroke-width%3D%223%22%20stroke-linecap%3D%22round%22%2F%3E%3C%2Fg%3E%3Cg%20transform%3D%22translate%28537%20493%29%20rotate%2816%29%20scale%280.72%29%22%3E%3Cpath%20d%3D%22M0%208%20C-18%20-3%20-17%20-19%20-4%20-18%20C1%20-18%205%20-14%207%20-10%20C14%20-23%2029%20-17%2026%20-3%20C24%207%209%2018%207%2020%20C5%2018%203%2013%200%208Z%22%2F%3E%3C%2Fg%3E%3Cg%20transform%3D%22translate%28787%20666%29%20rotate%28-9%29%20scale%280.9%29%22%3E%3Ccircle%20cx%3D%22-5%22%20cy%3D%22-8%22%20r%3D%228%22%2F%3E%3Ccircle%20cx%3D%229%22%20cy%3D%22-8%22%20r%3D%228%22%2F%3E%3Ccircle%20cx%3D%222%22%20cy%3D%223%22%20r%3D%228%22%2F%3E%3Cpath%20d%3D%22M3%208%20Q10%2019%2011%2026%22%20fill%3D%22none%22%20stroke%3D%22%239a7956%22%20stroke-width%3D%223%22%20stroke-linecap%3D%22round%22%2F%3E%3C%2Fg%3E%3Cg%20transform%3D%22translate%28311%20698%29%20rotate%28-18%29%20scale%280.95%29%22%3E%3Cpath%20d%3D%22M0%208%20C-18%20-3%20-17%20-19%20-4%20-18%20C1%20-18%205%20-14%207%20-10%20C14%20-23%2029%20-17%2026%20-3%20C24%207%209%2018%207%2020%20C5%2018%203%2013%200%208Z%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E"),
-    radial-gradient(circle, rgb(119 86 57 / 25%) 2.5px, transparent 3px),
-    radial-gradient(circle at 82% 8%, rgb(119 86 57 / 5%), transparent 28rem);
+    radial-gradient(circle at 4px 4px, #f8ccd1 4.8px, transparent 5.2px),
+    radial-gradient(circle at 23.5px 25px, #f8ccd1 4.8px, transparent 5.2px);
+  background-size: 39px 42px;
+  background-repeat: repeat;
+  background-attachment: fixed;
 }
 
 /* ---------- Accessibility preferences ---------- */
