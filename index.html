@@ -1,123 +1,382 @@
 
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>ooxxd | Security Note</title>
 
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Jua&family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+  <link rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
 
+  <link
+    href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Jua&family=Pixelify+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- CSS -->
   <link rel="stylesheet" href="./style.css">
+
+  <!-- JavaScript -->
   <script src="./script.js" defer></script>
 </head>
+
 <body>
+
   <div class="app">
 
-   <!-- 왼쪽 메뉴 -->
-<aside class="sidebar" id="sidebar">
-  <div class="brand">
+    <!-- ===================================
+         왼쪽 사이드바
+    =================================== -->
 
-    <!-- 블로그 로고 -->
-    
-<div class="logo-button">
-  <svg class="folder-terminal-icon"
-       viewBox="0 0 64 56"
-       xmlns="http://www.w3.org/2000/svg"
-       role="img"
-       aria-label="폴더 터미널 아이콘">
-    <path d="M6 16 V12 Q6 8 10 8 H25 L31 14 H53
-             Q58 14 58 19 V45 Q58 49 54 49 H10
-             Q6 49 6 45 Z"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2.5"
-          stroke-linejoin="round"/>
-    <path d="M7 21 H57"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"/>
-    <path d="M18 29 L25 35 L18 41"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2.8"
-          stroke-linecap="round"
-          stroke-linejoin="round"/>
-    <path d="M31 41 H43"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2.8"
-          stroke-linecap="round"/>
-  </svg>
-</div>
+    <aside class="sidebar" id="sidebar">
 
+      <!-- 상단 땡땡이 무늬 -->
+      <div class="sidebar-check sidebar-check-top"
+           aria-hidden="true"></div>
 
-    <!-- 블로그 이름 -->
-    <h1>Security<br>Note</h1>
-    <p>Development · Security · Study</p>
+      <!-- 가운데 메뉴: 이 영역만 스크롤 -->
+      <div class="sidebar-scroll">
 
-  </div>
+        <!-- 블로그 로고 및 제목 -->
+        <div class="brand">
 
-      <div class="side-divider"></div>
+          <div class="logo-button">
 
-      <nav class="main-nav" aria-label="주 메뉴">
-        <button data-page="home" class="nav-btn active">⌂ <span>Home</span></button>
-        <button data-page="about" class="nav-btn">♙ <span>About</span></button>
-        <button data-page="archives" class="nav-btn">▤ <span>Archives</span></button>
-        <button data-page="tags" class="nav-btn">◇ <span>Tags</span></button>
-      </nav>
+            <!-- 폴더 안에 터미널 기호 -->
+            <svg class="folder-terminal-icon"
+                 viewBox="0 0 64 56"
+                 xmlns="http://www.w3.org/2000/svg"
+                 role="img"
+                 aria-label="터미널 폴더 아이콘">
 
-      <div class="side-divider"></div>
+              <!-- 폴더 외곽 -->
+              <path
+                d="M6 16 V12 Q6 8 10 8 H25
+                   L31 14 H53 Q58 14 58 19
+                   V45 Q58 49 54 49 H10
+                   Q6 49 6 45 Z"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linejoin="round"
+              />
 
-      <div class="category-menu">
-        <h2>▱ &nbsp; Categories</h2>
-        <button class="category-btn" data-category="개발">▱ &nbsp; 개발</button>
-        <button class="category-btn" data-category="CTF/Wargame">▱ &nbsp; CTF / Wargame</button>
-        <button class="category-btn" data-category="Bug Bounty">▱ &nbsp; Bug Bounty</button>
-        <button class="category-btn" data-category="블로그/기술문서">▱ &nbsp; 블로그 / 기술문서</button>
-        <button class="category-btn" data-category="논문/컨퍼런스">▱ &nbsp; 논문 / 컨퍼런스</button>
-        <button class="category-btn" data-category="공모전/자격증">▱ &nbsp; 공모전 / 자격증</button>
+              <!-- 폴더 안쪽 선 -->
+              <path
+                d="M7 21 H57"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              />
+
+              <!-- 터미널 > 기호 -->
+              <path
+                d="M18 29 L25 35 L18 41"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+
+              <!-- 터미널 _ 기호 -->
+              <path
+                d="M31 41 H43"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.8"
+                stroke-linecap="round"
+              />
+
+            </svg>
+          </div>
+
+          <h1>Security<br>Note</h1>
+
+          <p>
+            Development · Security · Study
+          </p>
+
+        </div>
+
+        <!-- 구분선 -->
+        <div class="side-divider"></div>
+
+        <!-- 메인 메뉴 -->
+        <nav class="main-nav"
+             aria-label="주 메뉴">
+
+          <button
+            type="button"
+            data-page="home"
+            class="nav-btn active">
+            ⌂ <span>Home</span>
+          </button>
+
+          <button
+            type="button"
+            data-page="about"
+            class="nav-btn">
+            ♙ <span>About</span>
+          </button>
+
+          <button
+            type="button"
+            data-page="archives"
+            class="nav-btn">
+            ▤ <span>Archives</span>
+          </button>
+
+          <button
+            type="button"
+            data-page="tags"
+            class="nav-btn">
+            ◇ <span>Tags</span>
+          </button>
+
+        </nav>
+
+        <!-- 구분선 -->
+        <div class="side-divider"></div>
+
+        <!-- 카테고리 -->
+        <div class="category-menu">
+
+          <h2>▱ &nbsp; Categories</h2>
+
+          <button
+            type="button"
+            class="category-btn"
+            data-category="개발">
+            ▱ &nbsp; 개발
+          </button>
+
+          <button
+            type="button"
+            class="category-btn"
+            data-category="CTF/Wargame">
+            ▱ &nbsp; CTF / Wargame
+          </button>
+
+          <button
+            type="button"
+            class="category-btn"
+            data-category="Bug Bounty">
+            ▱ &nbsp; Bug Bounty
+          </button>
+
+          <button
+            type="button"
+            class="category-btn"
+            data-category="블로그/기술문서">
+            ▱ &nbsp; 블로그 / 기술문서
+          </button>
+
+          <button
+            type="button"
+            class="category-btn"
+            data-category="논문/컨퍼런스">
+            ▱ &nbsp; 논문 / 컨퍼런스
+          </button>
+
+          <button
+            type="button"
+            class="category-btn"
+            data-category="공모전/자격증">
+            ▱ &nbsp; 공모전 / 자격증
+          </button>
+
+        </div>
+
+        <!-- 하단 정보 -->
+        <div class="side-divider"></div>
+
+        <div class="side-footer">
+          <small>© 2026 ooxxd</small>
+        </div>
+
       </div>
 
-      <div class="side-footer">
-        <span>● ● ● ● ●</span>
-        <small>© ooxxd</small>
-      </div>
+      <!-- 하단 땡땡이 무늬 -->
+      <div class="sidebar-check sidebar-check-bottom"
+           aria-hidden="true"></div>
+
     </aside>
 
-    <!-- 메인 콘텐츠 -->
+
+    <!-- ===================================
+         중앙 메인 화면
+    =================================== -->
+
     <main class="main">
+
+      <!-- 상단 검색 및 메뉴 -->
       <header class="topbar">
-        <button class="mobile-menu" id="menu-toggle" aria-label="메뉴 열기">☰</button>
+
+        <!-- 모바일 메뉴 -->
+        <button
+          type="button"
+          class="mobile-menu"
+          id="menu-toggle"
+          aria-label="메뉴 열기">
+          ☰
+        </button>
+
+        <!-- 검색 -->
         <div class="search-wrap">
-          <span>⌕</span>
-          <input type="search" id="search" placeholder="글 검색하기...">
+
+          <span aria-hidden="true">⌕</span>
+
+          <input
+            type="search"
+            id="search"
+            placeholder="글 검색하기..."
+            aria-label="게시글 검색"
+          >
+
         </div>
-        <a id="github-link" href="https://github.com/ooxxd" target="_blank" rel="noopener">GitHub ↗</a>
-        <button id="theme-toggle" class="icon-button" aria-label="테마 변경">☾</button>
+
+        <!-- GitHub -->
+        <a
+          id="github-link"
+          href="https://github.com/ooxxd"
+          target="_blank"
+          rel="noopener noreferrer">
+          GitHub ↗
+        </a>
+
+        <!-- 테마 변경 -->
+        <button
+          type="button"
+          id="theme-toggle"
+          class="icon-button"
+          aria-label="테마 변경">
+          ☾
+        </button>
+
       </header>
 
-      <!-- 화면별 내용이 여기 표시됨 -->
-      <div id="page-content" aria-live="polite"></div>
+
+      <!-- 실제 화면이 표시되는 영역 -->
+      <!-- Home, About, Archives, Tags, 카테고리 -->
+      <div id="page-content"
+           aria-live="polite">
+
+        <!-- script.js가 내용을 자동으로 표시 -->
+
+      </div>
+
     </main>
 
-    <!-- 오른쪽 위젯 -->
+
+    <!-- ===================================
+         오른쪽 사이드 위젯
+    =================================== -->
+
     <aside class="widgets">
 
-      <section class="window">
+      <!-- 프로필 -->
+      <section class="window profile-widget">
+
         <div class="window-bar">
-          <span>✿ tags.exe</span><span>─ □ ×</span>
+          <span>✿ profile.exe</span>
+          <span>─ □ ×</span>
         </div>
-        <div id="widget-tags" class="widget-tags"></div>
+
+        <div class="widget-content">
+
+          <div class="profile-row">
+
+            <!-- 프로필 사진: GitHub에서 변경 -->
+            <div class="profile-photo">
+
+              <img
+                id="profile-img"
+                src="./assets/profile.png"
+                alt="ooxxd 프로필 사진"
+              >
+
+              <span
+                id="profile-placeholder"
+                hidden>
+                o
+              </span>
+
+            </div>
+
+            <!-- 프로필 소개 -->
+            <div>
+
+              <h2>ooxxd</h2>
+
+              <p>
+                보안과 개발을 공부하며<br>
+                기록하는 공간
+              </p>
+
+            </div>
+
+          </div>
+
+          <!-- 프로필 링크 -->
+          <div class="profile-links">
+
+            <button
+              type="button"
+              data-page="about"
+              class="text-link">
+              About me ↗
+            </button>
+
+            <a
+              href="https://github.com/ooxxd"
+              target="_blank"
+              rel="noopener noreferrer">
+              GitHub ↗
+            </a>
+
+          </div>
+
+        </div>
+
       </section>
 
-      <div class="side-note">learning, breaking & documenting_</div>
+
+      <!-- 태그 위젯 -->
+      <section class="window">
+
+        <div class="window-bar">
+          <span>✿ tags.exe</span>
+          <span>─ □ ×</span>
+        </div>
+
+        <div id="widget-tags"
+             class="widget-tags">
+
+          <!-- 게시글 태그 자동 표시 -->
+
+        </div>
+
+      </section>
+
+
+      <!-- 하단 문구 -->
+      <div class="side-note">
+        learning, breaking & documenting_
+      </div>
+
     </aside>
 
   </div>
 
+  <!-- 알림 영역 -->
   <div id="toast" role="status"></div>
+
 </body>
 </html>
