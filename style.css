@@ -1,61 +1,55 @@
-
-/* ==========================================
+/* =========================================================
    ooxxd's Security Note
-   Brown / Cream / Soft Yellow
-   Retro Pixel Blog Theme
-========================================== */
+   Brown / Cream / Soft Yellow · Retro Pixel Blog Theme
+========================================================= */
 
-/* Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Jua&family=Pixelify+Sans:wght@400;500;600;700&display=swap');
-
-/* ==========================================
-   Colors
-========================================== */
+@import url("https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Jua&family=Pixelify+Sans:wght@400;500;600;700&display=swap");
 
 :root {
+  color-scheme: dark;
+
   --bg: #34271f;
   --sidebar: #38271f;
   --panel: #403028;
-  --panel2: #4b392f;
-
+  --panel-2: #4b392f;
   --cream: #fff5d9;
   --paper: #fff9eb;
   --yellow: #ffe8a0;
   --yellow-hover: #ffdc7a;
-
   --border: #dcca9e;
   --border-dark: #907765;
-
   --text: #fff5dc;
   --sub: #d7c3ac;
   --ink: #30231d;
+  --shadow: 0 18px 44px rgb(18 10 6 / 18%);
 
   --radius: 14px;
-
   --font-body: "Gowun Dodum", "Malgun Gothic", sans-serif;
   --font-title: "Jua", "Gowun Dodum", sans-serif;
-  --font-pixel: "Pixelify Sans", monospace;
+  --font-pixel: "Pixelify Sans", "Courier New", monospace;
 }
 
-/* ==========================================
-   Global
-========================================== */
+/* ---------- Reset / base ---------- */
 
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
 html {
+  min-width: 320px;
   scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
+  min-width: 320px;
   min-height: 100vh;
-
-  background: var(--bg);
+  background:
+    radial-gradient(circle at 82% 8%, rgb(255 232 160 / 5%), transparent 28rem),
+    var(--bg);
   color: var(--text);
-
   font-family: var(--font-body);
   font-size: 15px;
   line-height: 1.7;
@@ -103,131 +97,88 @@ p {
   overflow-wrap: break-word;
 }
 
-/* ==========================================
-   Main Layout
-========================================== */
+/* ---------- Three-column layout ---------- */
 
 .app {
   display: grid;
-
-  grid-template-columns:
-    250px minmax(0, 1fr) 305px;
-
+  grid-template-columns: 250px minmax(0, 1fr) 305px;
   gap: 24px;
-
-  max-width: 1700px;
+  width: min(100%, 1700px);
   min-height: 100vh;
-
-  padding: 18px;
   margin: 0 auto;
+  padding: 18px;
 }
 
 .main {
   min-width: 0;
 }
 
-/* ==========================================
-   Sidebar
-========================================== */
-
-/*
-   사이드바는 3부분으로 구성
-
-   1. 상단 땡땡이
-   2. 스크롤 가능한 메뉴
-   3. 하단 땡땡이
-
-   기존 ::before / ::after 장식 사용 안 함
-*/
+/* ---------- Sidebar ---------- */
 
 .sidebar {
   position: sticky;
-  top: 0;
-
-  display: flex;
-  flex-direction: column;
-
+  top: 18px;
+  isolation: isolate;
   width: 100%;
-  height: 100vh;
-
-  padding: 0;
-
-  background: var(--sidebar);
-  border-right: 1px solid #755f4e;
-
+  height: calc(100vh - 36px);
+  height: calc(100dvh - 36px);
   overflow: hidden;
+  background: var(--sidebar);
+  border: 1px solid #755f4e;
+  border-radius: 16px;
+  box-shadow: var(--shadow);
 }
-
-/* 기존 체크무늬 완전히 제거 */
-.sidebar::before,
-.sidebar::after {
-  content: none !important;
-  display: none !important;
-}
-
-/* ==========================================
-   Sidebar Dot Pattern
-========================================== */
-
-.sidebar-check {
-  position: relative;
-  z-index: 2;
-
-  display: block;
-  flex: 0 0 55px;
-
-  width: 100%;
-  height: 55px;
-
-  background-color: #6f5040;
-
-  background-image:
-    radial-gradient(
-      circle,
-      #f6e7cf 2.4px,
-      transparent 2.8px
-    );
-
-  background-size: 19px 19px;
-  background-position: center;
-
-  pointer-events: none;
-}
-
-/* 상단 땡땡이 */
-.sidebar-check-top {
-  border-bottom: 2px solid #f7e5cc;
-}
-
-/* 하단 땡땡이 */
-.sidebar-check-bottom {
-  border-top: 2px solid #f7e5cc;
-}
-
-/* ==========================================
-   Sidebar Scroll Area
-========================================== */
 
 /*
-   상단과 하단 땡땡이는 고정
-   이 영역만 스크롤됨
+   한 장의 CSS 도트 배경을 네 모서리에서만 보이게 마스킹합니다.
+   실제 HTML 띠 요소가 없고 클릭도 받지 않으므로 메뉴와 겹치지 않습니다.
 */
+.sidebar::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: radial-gradient(circle, #f6e7cf 2.1px, transparent 2.45px);
+  background-position: 1px 1px;
+  background-size: 18px 18px;
+  opacity: 0.7;
+  pointer-events: none;
 
+  -webkit-mask-image:
+    linear-gradient(#000 0 0),
+    linear-gradient(#000 0 0),
+    linear-gradient(#000 0 0),
+    linear-gradient(#000 0 0);
+  -webkit-mask-position: left top, right top, left bottom, right bottom;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: 108px 68px;
+
+  mask-image:
+    linear-gradient(#000 0 0),
+    linear-gradient(#000 0 0),
+    linear-gradient(#000 0 0),
+    linear-gradient(#000 0 0);
+  mask-position: left top, right top, left bottom, right bottom;
+  mask-repeat: no-repeat;
+  mask-size: 108px 68px;
+}
+
+/* 모서리 도트와 실제 메뉴 사이에 항상 안전 여백을 둡니다. */
 .sidebar-scroll {
-  flex: 1 1 auto;
-  min-height: 0;
-
-  padding: 22px 16px;
-
-  overflow-y: auto;
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  padding: 88px 16px;
   overflow-x: hidden;
-
-  scrollbar-width: thin;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
   scrollbar-color: #a48a72 transparent;
+  scrollbar-width: thin;
 }
 
 .sidebar-scroll::-webkit-scrollbar {
-  width: 5px;
+  width: 6px;
 }
 
 .sidebar-scroll::-webkit-scrollbar-track {
@@ -236,269 +187,191 @@ p {
 
 .sidebar-scroll::-webkit-scrollbar-thumb {
   background: #a48a72;
-  border-radius: 10px;
+  border: 1px solid var(--sidebar);
+  border-radius: 999px;
 }
-
-/* ==========================================
-   Sidebar Brand
-========================================== */
 
 .brand {
+  padding: 0 3px;
   text-align: center;
-  padding: 0 2px;
 }
-
-/* 폴더 터미널 아이콘 영역 */
 
 .logo-button {
   display: grid;
-  place-items: center;
-
   width: 78px;
-  height: 78px;
-
-  margin: 0 auto 12px;
-  padding: 0;
-
-  background: transparent;
-  border: 0;
-
+  height: 64px;
+  margin: 0 auto 8px;
   color: var(--yellow);
+  place-items: center;
 }
-
-/* 폴더 안에 >_ 모양 */
 
 .folder-terminal-icon {
   display: block;
-
   width: 58px;
   height: 52px;
-
-  color: var(--yellow);
+  filter: drop-shadow(0 3px 0 rgb(0 0 0 / 12%));
 }
-
-/* 블로그 제목 */
 
 .brand h1 {
-  margin: 8px 0 14px;
-
-  font-family: var(--font-pixel);
-  font-size: 23px;
-  font-weight: 700;
-
-  line-height: 1.35;
-  letter-spacing: 0;
-
+  margin: 8px 0 12px;
   color: var(--text);
+  font-family: var(--font-pixel);
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1.25;
 }
 
-/* 블로그 설명 */
-
 .brand p {
-  margin: 0 0 24px;
-
-  font-size: 11px;
+  margin: 0;
   color: var(--sub);
-
+  font-size: 11px;
   line-height: 1.7;
 }
 
-/* ==========================================
-   Sidebar Divider
-========================================== */
-
 .side-divider {
   height: 1px;
-
   margin: 22px 0;
-
   border-top: 1px dashed var(--border);
+  opacity: 0.75;
 }
 
-/* ==========================================
-   Main Navigation
-========================================== */
-
-.main-nav {
-  display: flex;
-  flex-direction: column;
-
-  gap: 7px;
-}
-
-.nav-btn {
-  display: flex;
-  align-items: center;
-
-  width: 100%;
-  min-height: 45px;
-
-  padding: 10px 14px;
-  gap: 12px;
-
-  background: transparent;
-  color: var(--text);
-
-  border: 1px solid transparent;
-  border-radius: 12px;
-
-  text-align: left;
-  font-size: 19px;
-
-  transition:
-    background 0.15s ease,
-    color 0.15s ease;
-}
-
-.nav-btn span {
-  font-family: var(--font-body);
-  font-size: 15px;
-}
-
-.nav-btn:hover,
-.nav-btn.active {
-  background: var(--cream);
-  color: var(--ink);
-}
-
-/* ==========================================
-   Categories
-========================================== */
-
+.main-nav,
 .category-menu {
   display: flex;
   flex-direction: column;
-
-  gap: 6px;
   width: 100%;
 }
 
-.category-menu h2 {
-  margin: 0 0 13px;
-  padding-bottom: 11px;
-
-  border-bottom: 1px solid var(--border);
-
-  font-family: var(--font-title);
-  font-size: 17px;
-  font-weight: 400;
-
-  color: var(--text);
+.main-nav {
+  gap: 7px;
 }
 
+.nav-btn,
 .category-btn {
   display: flex;
   align-items: center;
-
   width: 100%;
-  min-height: 42px;
-
-  padding: 9px 12px;
-
   background: transparent;
   color: var(--text);
-
   border: 1px solid transparent;
-  border-radius: 11px;
-
   text-align: left;
-
-  font-family: var(--font-body);
-  font-size: 13px;
-  line-height: 1.5;
-
-  overflow-wrap: anywhere;
-
-  transition:
-    background 0.15s ease,
-    color 0.15s ease;
+  transition: background-color 150ms ease, color 150ms ease, transform 150ms ease;
 }
 
+.nav-btn {
+  min-height: 45px;
+  gap: 12px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-size: 15px;
+}
+
+.nav-icon {
+  flex: 0 0 20px;
+  font-size: 19px;
+  text-align: center;
+}
+
+.nav-btn:hover,
+.nav-btn.active,
 .category-btn:hover,
 .category-btn.active {
   background: var(--cream);
   color: var(--ink);
 }
 
-/* ==========================================
-   Sidebar Footer
-========================================== */
+.nav-btn:active,
+.category-btn:active {
+  transform: translateY(1px);
+}
+
+.category-menu {
+  gap: 6px;
+}
+
+.category-menu h2 {
+  margin: 0 0 13px;
+  padding-bottom: 11px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+  font-family: var(--font-title);
+  font-size: 17px;
+  font-weight: 400;
+}
+
+.category-btn {
+  min-height: 42px;
+  padding: 9px 12px;
+  border-radius: 11px;
+  font-size: 13px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.category-btn > span {
+  flex: 0 0 auto;
+}
 
 .side-footer {
   display: flex;
   flex-direction: column;
-
-  gap: 8px;
-
-  margin-top: 30px;
-  padding: 12px 0 16px;
-
+  gap: 4px;
+  padding-bottom: 2px;
   color: var(--yellow);
-  font-size: 12px;
+  font-family: var(--font-pixel);
+  font-size: 11px;
+  text-align: center;
 }
 
 .side-footer small {
   color: var(--sub);
+  font-family: var(--font-body);
 }
 
-/* 예전 도트 장식 제거 */
-.side-footer > span,
-.sidebar-dots {
-  display: none;
-}
-
-/* ==========================================
-   Topbar
-========================================== */
+/* ---------- Topbar ---------- */
 
 .topbar {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-
   min-height: 54px;
   gap: 17px;
-
   margin-bottom: 20px;
 }
 
 .search-wrap {
   display: flex;
   align-items: center;
-
-  gap: 10px;
-
   width: min(360px, 100%);
-
+  gap: 10px;
   padding: 9px 16px;
-
-  border: 1px solid var(--border);
-  border-radius: 999px;
-
   background: var(--panel);
   color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 999px;
 }
 
-.search-wrap span {
+.search-wrap > span {
   font-size: 20px;
+  line-height: 1;
 }
 
 .search-wrap input {
+  flex: 1;
   width: 100%;
   min-width: 0;
-  flex: 1;
-
-  border: 0;
-  outline: 0;
-
+  padding: 0;
   background: transparent;
   color: var(--text);
-
+  border: 0;
+  outline: 0;
   font-size: 13px;
 }
 
 .search-wrap input::placeholder {
   color: var(--sub);
+  opacity: 1;
 }
 
 .topbar > a {
@@ -513,9 +386,10 @@ p {
 .icon-button,
 .mobile-menu,
 .text-link {
-  border: 0;
+  padding: 4px;
   background: transparent;
   color: var(--text);
+  border: 0;
 }
 
 .icon-button {
@@ -526,47 +400,40 @@ p {
   display: none;
 }
 
-/* ==========================================
-   Retro Window
-========================================== */
+/* ---------- Retro windows ---------- */
 
 .window {
   margin-bottom: 20px;
-
+  overflow: hidden;
   background: var(--panel);
-
   border: 1px solid var(--border);
   border-radius: var(--radius);
-
-  overflow: hidden;
+  box-shadow: 0 10px 28px rgb(20 10 5 / 10%);
 }
 
-.window-bar {
+.window-bar,
+.post-window-bar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   gap: 12px;
-  padding: 9px 15px;
-
-  background: var(--panel);
   color: var(--text);
-
-  border-bottom: 1px solid var(--border);
-
   font-family: var(--font-pixel);
-  font-size: 14px;
   line-height: 1.5;
 }
 
-/* ==========================================
-   Hero / Welcome
-========================================== */
+.window-bar {
+  padding: 9px 15px;
+  background: var(--panel);
+  border-bottom: 1px solid var(--border);
+  font-size: 14px;
+}
+
+/* ---------- Hero ---------- */
 
 .hero {
   background: var(--cream);
   color: var(--ink);
-
   border: 2px solid var(--yellow);
 }
 
@@ -576,85 +443,53 @@ p {
 
 .hero-content {
   position: relative;
+  isolation: isolate;
   overflow: hidden;
-
   padding: 34px 38px 44px;
 }
 
-/* 오른쪽 하단 도트 장식 */
-
 .hero-content::after {
   content: "";
-
   position: absolute;
   right: -25px;
   bottom: -30px;
-
+  z-index: -1;
   width: 230px;
   height: 155px;
-
-  background-image:
-    radial-gradient(
-      #e7c46a 2.5px,
-      transparent 2.5px
-    );
-
+  background-image: radial-gradient(#e7c46a 2.5px, transparent 2.7px);
   background-size: 21px 21px;
-
-  mask-image:
-    linear-gradient(
-      135deg,
-      transparent,
-      black
-    );
-
-  opacity: 0.65;
+  opacity: 0.6;
   pointer-events: none;
+  -webkit-mask-image: linear-gradient(135deg, transparent 5%, #000 85%);
+  mask-image: linear-gradient(135deg, transparent 5%, #000 85%);
 }
 
-/* 픽셀 제목 */
-
 .hero h1 {
-  position: relative;
-  z-index: 1;
-
   margin: 0 0 18px;
-
+  color: var(--ink);
   font-family: var(--font-pixel);
   font-size: clamp(31px, 3.2vw, 46px);
   font-weight: 700;
-
-  line-height: 1.35;
-  letter-spacing: 0;
-
-  color: var(--ink);
+  line-height: 1.25;
   overflow-wrap: anywhere;
 }
 
 .hero-subtitle {
+  margin: 0 0 19px;
   font-family: var(--font-title);
   font-size: 20px;
   line-height: 1.6;
-
-  margin: 0 0 19px;
 }
 
 .hero p {
-  position: relative;
-  z-index: 1;
-
+  margin: 0;
   font-size: 15px;
   line-height: 1.9;
-
-  margin: 0;
 }
-
-/* Hero Buttons */
 
 .actions {
   display: flex;
   flex-wrap: wrap;
-
   gap: 12px;
   margin-top: 26px;
 }
@@ -663,25 +498,15 @@ p {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-
-  position: relative;
-  z-index: 1;
-
   gap: 8px;
   padding: 10px 19px;
-
-  border: 1px solid var(--ink);
-  border-radius: 999px;
-
   background: transparent;
   color: var(--ink);
-
-  font-weight: 700;
+  border: 1px solid var(--ink);
+  border-radius: 999px;
   font-size: 14px;
-
-  transition:
-    background 0.15s,
-    transform 0.15s;
+  font-weight: 700;
+  transition: background-color 150ms ease, transform 150ms ease;
 }
 
 .btn.primary {
@@ -693,36 +518,34 @@ p {
   transform: translateY(-2px);
 }
 
-/* ==========================================
-   Section Title
-========================================== */
+/* ---------- Home dashboard ---------- */
+
+.home-section {
+  margin: 27px 0 35px;
+}
 
 .section-title {
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   gap: 12px;
-
   margin-bottom: 16px;
   padding: 7px 0 11px;
-
   border-bottom: 1px solid var(--border);
 }
 
 .section-title h2 {
   margin: 0;
-
   font-family: var(--font-title);
   font-size: 21px;
   font-weight: 400;
 }
 
 .section-title button {
+  padding: 5px;
   background: transparent;
-  border: 0;
-
   color: var(--text);
+  border: 0;
   font-size: 13px;
 }
 
@@ -730,58 +553,47 @@ p {
   color: var(--yellow);
 }
 
-/* ==========================================
-   Home Dashboard
-========================================== */
-
-.home-section {
-  margin: 27px 0 35px;
-}
-
-/* 학습 통계 */
-
 .home-stats {
   display: grid;
-  grid-template-columns:
-    repeat(3, minmax(0, 1fr));
-
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 14px;
+}
+
+.home-stat,
+.dashboard-card {
+  background: var(--panel-2);
+  color: var(--text);
+  border: 1px solid var(--border-dark);
+  border-radius: 12px;
 }
 
 .home-stat {
   display: flex;
   flex-direction: column;
-
   gap: 8px;
   padding: 22px 18px;
+}
 
-  background: var(--panel2);
-
-  border: 1px solid var(--border-dark);
-  border-radius: 12px;
+.home-stat strong,
+.stat-number {
+  color: var(--yellow);
+  font-family: var(--font-pixel);
+  font-weight: 700;
 }
 
 .home-stat strong {
-  font-family: var(--font-pixel);
   font-size: 30px;
-  font-weight: 700;
-
-  color: var(--yellow);
 }
 
-.home-stat span {
+.home-stat span,
+.stat-label {
   color: var(--sub);
   font-size: 13px;
 }
 
-/* 카테고리 카드 */
-
 .home-category-grid {
   display: grid;
-
-  grid-template-columns:
-    repeat(2, minmax(0, 1fr));
-
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
 }
 
@@ -790,30 +602,22 @@ p {
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-between;
-
-  gap: 16px;
-
-  min-height: 95px;
   width: 100%;
+  min-height: 95px;
+  gap: 16px;
   padding: 18px;
-
   background: var(--cream);
   color: var(--ink);
-
   border: 1px solid #cdb69b;
   border-radius: 12px;
-
   text-align: left;
-
-  transition:
-    transform 0.18s ease,
-    border-color 0.18s ease;
+  transition: background-color 180ms ease, border-color 180ms ease, transform 180ms ease;
 }
 
 .home-category-card:hover {
-  transform: translateY(-3px);
-  border-color: #b48a53;
   background: #ffefd0;
+  border-color: #b48a53;
+  transform: translateY(-3px);
 }
 
 .home-category-name {
@@ -823,59 +627,38 @@ p {
 
 .home-category-count {
   align-self: flex-end;
-
+  color: #765b46;
   font-family: var(--font-pixel);
   font-size: 13px;
-
-  color: #765b46;
 }
-
-/* 이전 대시보드 구조 호환 */
 
 .dashboard-grid {
   display: grid;
-
-  grid-template-columns:
-    minmax(0, 1.1fr)
-    minmax(0, 1fr);
-
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
   gap: 16px;
   margin: 22px 0;
 }
 
 .dashboard-card {
   padding: 20px;
-
-  background: var(--panel2);
-  color: var(--text);
-
-  border: 1px solid var(--border-dark);
-  border-radius: 12px;
 }
 
 .dashboard-card h3 {
   margin: 0 0 12px;
-
   font-family: var(--font-title);
   font-size: 18px;
+  font-weight: 400;
 }
 
 .stat-number {
-  font-family: var(--font-pixel);
   font-size: 32px;
-  font-weight: 700;
-
-  color: var(--yellow);
 }
 
 .stat-label {
   font-size: 12px;
-  color: var(--sub);
 }
 
-/* ==========================================
-   Study Calendar
-========================================== */
+/* ---------- Calendar ---------- */
 
 .home-calendar-wrap {
   margin-top: 15px;
@@ -890,7 +673,6 @@ p {
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   gap: 10px;
   margin-bottom: 18px;
 }
@@ -902,13 +684,10 @@ p {
 
 .calendar-header button {
   padding: 4px 12px;
-
-  border: 1px solid var(--border);
-  border-radius: 7px;
-
   background: transparent;
   color: var(--text);
-
+  border: 1px solid var(--border);
+  border-radius: 7px;
   font-size: 18px;
 }
 
@@ -919,10 +698,7 @@ p {
 
 .calendar-grid {
   display: grid;
-
-  grid-template-columns:
-    repeat(7, minmax(0, 1fr));
-
+  grid-template-columns: repeat(7, minmax(0, 1fr));
   gap: 6px;
 }
 
@@ -930,12 +706,9 @@ p {
   display: flex;
   align-items: center;
   justify-content: center;
-
   min-height: 35px;
   padding: 7px 0;
-
   border-radius: 7px;
-
   text-align: center;
   font-size: 13px;
 }
@@ -953,12 +726,9 @@ p {
 .calendar-day.has-post {
   background: var(--yellow);
   color: var(--ink);
-
   border: 0;
   border-radius: 8px;
-
   font-weight: 700;
-  cursor: pointer;
 }
 
 .calendar-day.has-post:hover {
@@ -973,31 +743,21 @@ p {
   min-height: 39px;
 }
 
-/* ==========================================
-   Post Cards
-========================================== */
+/* ---------- Post cards ---------- */
 
 .post-card {
   display: flex;
   align-items: center;
-
-  gap: 16px;
-
   width: 100%;
+  gap: 16px;
   margin-bottom: 13px;
   padding: 17px;
-
-  background: var(--panel2);
+  background: var(--panel-2);
   color: var(--text);
-
   border: 1px solid var(--border-dark);
   border-radius: 13px;
-
   text-align: left;
-
-  transition:
-    border-color 0.18s,
-    transform 0.18s;
+  transition: border-color 180ms ease, transform 180ms ease;
 }
 
 .post-card:hover {
@@ -1007,18 +767,14 @@ p {
 
 .post-icon {
   display: grid;
-  place-items: center;
-
   flex: 0 0 56px;
-
   width: 56px;
   height: 56px;
-
   background: var(--yellow);
   color: var(--ink);
-
   border-radius: 10px;
   font-size: 24px;
+  place-items: center;
 }
 
 .post-details {
@@ -1028,22 +784,19 @@ p {
 
 .post-details h3 {
   margin: 0 0 5px;
-
+  color: inherit;
   font-family: var(--font-title);
   font-size: 18px;
   font-weight: 400;
-
-  color: inherit;
 }
 
 .post-date {
-  font-size: 12px;
   color: var(--sub);
+  font-size: 12px;
 }
 
 .post-description {
   margin: 7px 0 0;
-
   color: var(--sub);
   font-size: 13px;
   line-height: 1.65;
@@ -1052,37 +805,28 @@ p {
 .pills {
   display: flex;
   flex-wrap: wrap;
-
   gap: 6px;
   margin-top: 7px;
 }
 
 .pill {
   padding: 3px 10px;
-
   background: var(--yellow);
   color: var(--ink);
-
-  border: 0;
   border-radius: 999px;
-
   font-size: 11px;
   font-weight: 700;
 }
 
 .empty {
   padding: 30px;
-
+  color: var(--sub);
   border: 1px dashed var(--border);
   border-radius: 12px;
-
-  color: var(--sub);
   text-align: center;
 }
 
-/* ==========================================
-   Right Widgets
-========================================== */
+/* ---------- Right widgets ---------- */
 
 .widgets {
   min-width: 0;
@@ -1093,41 +837,28 @@ p {
   padding: 20px;
 }
 
-/* 프로필 */
-
 .profile-row {
   display: flex;
   align-items: center;
-
   gap: 14px;
 }
 
 .profile-photo {
   display: grid;
-  place-items: center;
-
   flex: 0 0 72px;
-
   width: 72px;
   height: 72px;
-
-  padding: 0;
-
+  overflow: hidden;
   background: var(--cream);
   color: var(--ink);
-
-  border: 0;
   border-radius: 50%;
-
-  overflow: hidden;
+  place-items: center;
 }
 
 .profile-photo img {
   display: block;
-
   width: 100%;
   height: 100%;
-
   object-fit: cover;
 }
 
@@ -1138,7 +869,6 @@ p {
 
 .profile-row h2 {
   margin: 0 0 5px;
-
   font-family: var(--font-title);
   font-size: 25px;
   font-weight: 400;
@@ -1146,7 +876,6 @@ p {
 
 .profile-row p {
   margin: 0;
-
   font-size: 13px;
   line-height: 1.6;
 }
@@ -1154,14 +883,10 @@ p {
 .profile-links {
   display: flex;
   flex-wrap: wrap;
-
   gap: 20px;
-
   margin-top: 20px;
   padding-top: 15px;
-
   border-top: 1px dashed var(--border);
-
   font-size: 13px;
 }
 
@@ -1170,25 +895,20 @@ p {
   color: var(--yellow);
 }
 
-/* 태그 */
-
 .widget-tags {
   display: flex;
   flex-wrap: wrap;
-
+  min-height: 64px;
   gap: 9px;
   padding: 17px;
 }
 
 .tag-button {
   padding: 6px 12px;
-
   background: transparent;
   color: var(--text);
-
   border: 1px solid var(--border);
   border-radius: 999px;
-
   font-size: 12px;
 }
 
@@ -1199,17 +919,13 @@ p {
 
 .side-note {
   padding: 17px 8px;
-
-  text-align: center;
   color: var(--sub);
-
   font-family: var(--font-pixel);
   font-size: 12px;
+  text-align: center;
 }
 
-/* ==========================================
-   About / Archives / Tags
-========================================== */
+/* ---------- About / Archives / Tags ---------- */
 
 .page-heading {
   margin: 12px 0 26px;
@@ -1217,7 +933,6 @@ p {
 
 .page-heading h1 {
   margin: 0 0 8px;
-
   font-family: var(--font-title);
   font-size: 31px;
   font-weight: 400;
@@ -1225,7 +940,6 @@ p {
 
 .page-heading p {
   margin: 0;
-
   color: var(--sub);
   font-size: 14px;
 }
@@ -1233,19 +947,15 @@ p {
 .content-panel {
   margin-bottom: 20px;
   padding: 30px;
-
   background: var(--cream);
   color: var(--ink);
-
   border: 1px solid #d5c1a2;
   border-radius: 14px;
-
   line-height: 1.85;
 }
 
 .content-panel h2 {
   margin: 24px 0 12px;
-
   font-family: var(--font-title);
   font-size: 23px;
   font-weight: 400;
@@ -1274,15 +984,11 @@ p {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-
   padding: 10px 17px;
-
   background: var(--yellow);
   color: var(--ink);
-
   border: 1px solid #bda17a;
   border-radius: 9px;
-
   font-size: 13px;
   font-weight: 700;
 }
@@ -1291,63 +997,49 @@ p {
   background: var(--yellow-hover);
 }
 
-/* ==========================================
-   Markdown Post Page
-========================================== */
+/* ---------- Jekyll Markdown post.html ---------- */
 
 .post-page {
   margin: 0;
-
   background: var(--bg);
   color: var(--text);
 }
 
 .post-layout {
   display: grid;
-
-  grid-template-columns:
-    235px minmax(0, 1fr);
-
-  gap: 35px;
-
-  max-width: 1450px;
+  grid-template-columns: 235px minmax(0, 1fr);
+  width: min(100%, 1450px);
   min-height: 100vh;
-
+  gap: 35px;
   margin: 0 auto;
   padding: 24px;
 }
 
 .post-sidebar {
   padding: 35px 20px;
-
   border-right: 1px solid #776253;
 }
 
 .post-sidebar h2 {
   margin: 0 0 35px;
-
+  color: var(--yellow);
   font-family: var(--font-pixel);
   font-size: 25px;
   font-weight: 700;
-
   line-height: 1.35;
-  color: var(--yellow);
 }
 
 .post-sidebar nav {
   display: flex;
   flex-direction: column;
-
   gap: 12px;
 }
 
 .post-sidebar a {
   display: block;
-
   padding: 12px;
-  border-radius: 9px;
-
   color: var(--text);
+  border-radius: 9px;
 }
 
 .post-sidebar a:hover {
@@ -1363,36 +1055,25 @@ p {
 .post-back {
   display: inline-block;
   margin-bottom: 22px;
-
   color: var(--yellow);
 }
 
 .post-document {
   margin-bottom: 25px;
-
+  overflow: hidden;
   border: 1px solid var(--border);
   border-radius: 14px;
-
-  overflow: hidden;
+  box-shadow: var(--shadow);
 }
 
 .post-window-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
   padding: 12px 18px;
-
-  background: var(--panel2);
-  color: var(--text);
-
-  font-family: var(--font-pixel);
+  background: var(--panel-2);
   font-size: 15px;
 }
 
 .post-document-content {
   padding: 40px;
-
   background: var(--cream);
   color: var(--ink);
 }
@@ -1404,117 +1085,137 @@ p {
 
 .post-document-content > h1 {
   margin: 14px 0 24px;
-
   font-family: var(--font-title);
   font-size: clamp(25px, 3vw, 37px);
   font-weight: 400;
-
   line-height: 1.5;
 }
 
 .post-tags {
   display: flex;
   flex-wrap: wrap;
-
   gap: 8px;
   margin-bottom: 23px;
 }
 
 .post-tags span {
   padding: 5px 12px;
-
   background: var(--yellow);
-  border-radius: 999px;
-
   color: var(--ink);
+  border-radius: 999px;
   font-size: 12px;
+}
+
+.post-document-content > hr,
+.post-markdown hr {
+  height: 1px;
+  margin: 28px 0;
+  background: #ddcdb4;
+  border: 0;
 }
 
 .post-markdown {
   font-family: var(--font-body);
   font-size: 16px;
   line-height: 1.9;
-
   overflow-wrap: anywhere;
 }
 
 .post-markdown h1,
 .post-markdown h2,
-.post-markdown h3 {
+.post-markdown h3,
+.post-markdown h4 {
   font-family: var(--font-title);
   font-weight: 400;
+  line-height: 1.45;
 }
 
 .post-markdown h2 {
   margin-top: 40px;
   padding-bottom: 10px;
-
   border-bottom: 1px solid #ddcdb4;
 }
 
-.post-markdown pre {
-  padding: 20px;
+.post-markdown ul,
+.post-markdown ol {
+  padding-left: 1.6em;
+}
 
+.post-markdown li + li {
+  margin-top: 0.35em;
+}
+
+.post-markdown pre {
+  max-width: 100%;
+  padding: 20px;
+  overflow-x: auto;
   background: #30231d;
   color: #fff5dc;
-
   border-radius: 9px;
-
-  overflow-x: auto;
-  white-space: pre;
-
   line-height: 1.65;
+  white-space: pre;
 }
 
 .post-markdown pre code {
   padding: 0;
-
   background: transparent;
   color: inherit;
-
-  font-family: Consolas, monospace;
+  font-family: Consolas, "Courier New", monospace;
   font-size: 14px;
 }
 
 .post-markdown :not(pre) > code {
   padding: 2px 5px;
-
   background: #eadac2;
   color: var(--ink);
-
   border-radius: 4px;
-
-  font-family: Consolas, monospace;
+  font-family: Consolas, "Courier New", monospace;
 }
 
 .post-markdown img {
   display: block;
-
   max-width: 100%;
   height: auto;
-
   margin: 20px auto;
   border-radius: 9px;
+}
+
+.post-markdown figure {
+  margin: 24px 0;
+}
+
+.post-markdown figcaption {
+  margin-top: 8px;
+  color: #786454;
+  font-size: 13px;
+  text-align: center;
 }
 
 .post-markdown a {
   color: #785027;
   text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .post-markdown blockquote {
   margin: 20px 0;
   padding: 10px 18px;
-
   background: #f4e8cb;
-
   border-left: 4px solid #b89b65;
+}
+
+.post-markdown blockquote > :first-child {
+  margin-top: 0;
+}
+
+.post-markdown blockquote > :last-child {
+  margin-bottom: 0;
 }
 
 .post-markdown table {
   display: block;
+  width: max-content;
   max-width: 100%;
-
   overflow-x: auto;
   border-collapse: collapse;
 }
@@ -1525,26 +1226,32 @@ p {
   border: 1px solid #cbbda6;
 }
 
-/* ==========================================
-   Light Theme
-========================================== */
+.post-markdown th {
+  background: #f0dfbe;
+}
+
+/* ---------- Light theme ---------- */
 
 body.light {
+  color-scheme: light;
   --bg: #f7f0e2;
   --sidebar: #5b4436;
-
   --panel: #654b3b;
-  --panel2: #fff8e8;
-
+  --panel-2: #fff8e8;
   --text: #38291f;
   --sub: #6a5344;
-
   --border: #bba388;
   --border-dark: #cab29a;
+  --shadow: 0 18px 44px rgb(90 62 42 / 12%);
 }
 
 body.light .sidebar,
 body.light .widgets {
+  --text: #fff5dc;
+  --sub: #e0ceba;
+}
+
+body.light .search-wrap {
   --text: #fff5dc;
   --sub: #e0ceba;
 }
@@ -1568,18 +1275,12 @@ body.light .dashboard-card {
 body.light .post-description,
 body.light .post-date,
 body.light .home-stat span,
-body.light .stat-label {
-  color: #705949;
-}
-
-body.light .calendar-header button {
-  color: var(--ink);
-}
-
+body.light .stat-label,
 body.light .calendar-day.heading {
   color: #705949;
 }
 
+body.light .calendar-header button,
 body.light .post-sidebar a {
   color: var(--ink);
 }
@@ -1588,28 +1289,19 @@ body.light .post-back {
   color: #785027;
 }
 
-/* ==========================================
-   Tablet
-========================================== */
+/* ---------- Tablet ---------- */
 
 @media (max-width: 1200px) {
-
   .app {
-    grid-template-columns:
-      210px minmax(0, 1fr);
-
+    grid-template-columns: 210px minmax(0, 1fr);
     gap: 16px;
   }
 
   .widgets {
-    grid-column: 2;
-
     display: grid;
-    grid-template-columns:
-      repeat(2, minmax(0, 1fr));
-
+    grid-column: 2;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 14px;
-
     padding-top: 0;
   }
 
@@ -1622,63 +1314,52 @@ body.light .post-back {
   }
 
   .brand h1 {
-    font-size: 19px;
+    font-size: 21px;
   }
 
   .hero h1 {
     font-size: 34px;
   }
-
 }
 
-/* ==========================================
-   Mobile
-========================================== */
+/* ---------- Mobile ---------- */
 
 @media (max-width: 760px) {
-
   .app {
     display: block;
     padding: 12px;
   }
 
-  /* 모바일 사이드바 */
-
   .sidebar {
     display: none;
-
     position: fixed;
     top: 0;
     left: 0;
-
-    width: 270px;
-    height: 100dvh;
-
     z-index: 50;
-
-    box-shadow:
-      8px 0 30px rgba(0, 0, 0, 0.3);
+    width: min(286px, 88vw);
+    height: 100vh;
+    height: 100dvh;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    box-shadow: 8px 0 32px rgb(0 0 0 / 35%);
   }
 
   .sidebar.open {
-    display: flex;
+    display: block;
   }
 
-  /* 모바일 땡땡이 */
-
-  .sidebar-check {
-    flex: 0 0 44px;
-    height: 44px;
+  .sidebar::before {
+    -webkit-mask-size: 94px 60px;
+    mask-size: 94px 60px;
   }
 
   .sidebar-scroll {
-    padding: 18px 16px;
+    padding: 76px 16px;
   }
-
-  /* 상단 */
 
   .mobile-menu {
     display: block;
+    flex: 0 0 auto;
     font-size: 22px;
   }
 
@@ -1688,21 +1369,20 @@ body.light .post-back {
   }
 
   .topbar > a {
-    font-size: 12px;
+    display: none;
   }
 
   .search-wrap {
     flex: 1;
+    width: auto;
   }
-
-  /* 메인 소개 */
 
   .hero-content {
     padding: 26px 20px 36px;
   }
 
   .hero h1 {
-    font-size: clamp(25px, 6vw, 34px);
+    font-size: clamp(25px, 8vw, 34px);
   }
 
   .hero-subtitle {
@@ -1718,11 +1398,9 @@ body.light .post-back {
   }
 
   .btn {
-    font-size: 12px;
     padding: 9px 14px;
+    font-size: 12px;
   }
-
-  /* Home */
 
   .dashboard-grid {
     grid-template-columns: 1fr;
@@ -1753,8 +1431,6 @@ body.light .post-back {
     padding: 15px;
   }
 
-  /* Calendar */
-
   .home-calendar-wrap .dashboard-card {
     padding: 14px;
   }
@@ -1764,15 +1440,15 @@ body.light .post-back {
     gap: 3px;
   }
 
-  .calendar-day {
-    font-size: 12px;
-    padding: 5px 0;
+  .calendar-day,
+  .home-calendar-wrap .calendar-day {
     min-height: 30px;
+    padding: 5px 0;
+    font-size: 12px;
   }
 
-  /* Posts */
-
   .post-card {
+    align-items: flex-start;
     gap: 10px;
     padding: 13px;
   }
@@ -1788,8 +1464,6 @@ body.light .post-back {
     font-size: 16px;
   }
 
-  /* Widgets */
-
   .widgets {
     display: block;
     padding-top: 20px;
@@ -1799,8 +1473,6 @@ body.light .post-back {
     margin-bottom: 16px;
   }
 
-  /* Other Pages */
-
   .content-panel {
     padding: 22px 18px;
   }
@@ -1809,8 +1481,6 @@ body.light .post-back {
     font-size: 26px;
   }
 
-  /* Markdown Page */
-
   .post-layout {
     display: block;
     padding: 14px;
@@ -1818,14 +1488,20 @@ body.light .post-back {
 
   .post-sidebar {
     padding: 15px;
-
     border-right: 0;
     border-bottom: 1px solid var(--border);
   }
 
+  .post-sidebar h2 {
+    margin-bottom: 14px;
+  }
+
   .post-sidebar nav {
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-flow: row wrap;
+  }
+
+  .post-sidebar a {
+    padding: 8px 10px;
   }
 
   .post-main {
@@ -1839,21 +1515,59 @@ body.light .post-back {
   .post-markdown {
     font-size: 14px;
   }
-
 }
 
-/* ==========================================
-   Reduced Motion
-========================================== */
+@media (max-width: 430px) {
+  .app {
+    padding: 9px;
+  }
+
+  .topbar {
+    gap: 7px;
+  }
+
+  .search-wrap {
+    padding: 8px 12px;
+  }
+
+  .icon-button,
+  .mobile-menu {
+    padding: 3px;
+  }
+
+  .home-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .home-stat {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .profile-photo {
+    flex-basis: 62px;
+    width: 62px;
+    height: 62px;
+  }
+}
+
+/* ---------- Accessibility preferences ---------- */
 
 @media (prefers-reduced-motion: reduce) {
-
   *,
   *::before,
   *::after {
-    animation-duration: 0.01ms !important;
-    transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
+}
 
+@media (forced-colors: active) {
+  .sidebar::before,
+  .hero-content::after {
+    display: none;
+  }
 }
