@@ -30,10 +30,10 @@ const CATEGORIES = [
 
 const CATEGORY_ICONS = {
   "개발": "⌘",
-  "CTF/Wargame": "</>",
+  "CTF/Wargame": "☘︎",
   "Bug Bounty": "♢",
   "블로그/기술문서": "▤",
-  "논문/컨퍼런스": "▣",
+  "논문/컨퍼런스": "✎",
   "공모전/자격증": "★"
 };
 
@@ -379,7 +379,7 @@ function renderHome() {
         data-category="${escapeHTML(category)}">
 
         <span class="home-category-name">
-          ⸝𖤐 ${escapeHTML(category)}
+          ${escapeHTML(CATEGORY_ICONS[category] || "☆")} ${escapeHTML(category)}
         </span>
 
         <span class="home-category-count">
