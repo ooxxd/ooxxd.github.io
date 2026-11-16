@@ -154,12 +154,10 @@ function hero() {
         <h1>Security Study Log_</h1>
 
         <div class="hero-subtitle">
-          개발하고, 분석하고, 기록하는 보안 학습 블로그
+          ╰( ´・ω・)つ──☆✿✿✿✿✿✿
         </div>
 
         <p>
-          CTF 문제 풀이부터 취약점 분석,
-          개발, 논문 정리까지<br>
           보안 공부 과정과 기록을
           차곡차곡 남기는 공간입니다.
         </p>
