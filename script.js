@@ -457,7 +457,7 @@ function renderHome() {
     <!-- 최근 게시글 -->
     <section class="home-section">
       <div class="section-title">
-        <h2>✿ܓ 최근 게시글</h2>
+        <h2>⊰✿ 최근 게시글</h2>
         <button data-page="archives">
           전체 보기 →
         </button>
