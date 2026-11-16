@@ -1559,3 +1559,24 @@ body.light .post-back {
     display: none;
   }
 }
+
+/* 프로필 하단 링크 높이 정렬 */
+.profile-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.profile-links a,
+.profile-links button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  margin: 0;
+  padding: 0;
+
+  font: inherit;
+  line-height: 1.5;
+  vertical-align: middle;
+}
