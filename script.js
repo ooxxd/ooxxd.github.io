@@ -379,7 +379,7 @@ function renderHome() {
         data-category="${escapeHTML(category)}">
 
         <span class="home-category-name">
-          ▱ ${escapeHTML(category)}
+          ⸝𖤐 ${escapeHTML(category)}
         </span>
 
         <span class="home-category-count">
@@ -422,7 +422,7 @@ function renderHome() {
     <!-- 카테고리 바로가기 -->
     <section class="home-section">
       <div class="section-title">
-        <h2>▱ Categories</h2>
+        <h2>⸝𖤐 Categories</h2>
       </div>
 
       <div class="home-category-grid">
@@ -457,7 +457,7 @@ function renderHome() {
     <!-- 최근 게시글 -->
     <section class="home-section">
       <div class="section-title">
-        <h2>▱ 최근 게시글</h2>
+        <h2>✿ܓ 최근 게시글</h2>
         <button data-page="archives">
           전체 보기 →
         </button>
