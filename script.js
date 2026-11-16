@@ -349,18 +349,19 @@ function calendarHTML() {
 function renderHome() {
   const list = allPosts();
 
-  // 실제 게시글에서 통계 계산
-  const categoryCounts = {};
+  // 현재 연도와 월 가져오기
+  const today = new Date();
 
-  CATEGORIES.forEach(category => {
-    categoryCounts[category] = list.filter(
-      post => post.category === category
-    ).length;
-  });
+  const currentMonth =
+    `${today.getFullYear()}-${String(
+      today.getMonth() + 1
+    ).padStart(2, "0")}`;
 
-  const usedCategories = CATEGORIES.filter(
-    category => categoryCounts[category] > 0
+  // 이번 달에 작성한 게시글 개수 계산
+  const monthlyPosts = list.filter(post =>
+    post.date.startsWith(currentMonth)
   ).length;
+
 
   const uniqueTags = new Set(
     list.flatMap(post => post.tags || [])
@@ -407,8 +408,8 @@ function renderHome() {
         </div>
 
         <div class="home-stat">
-          <strong>${usedCategories}</strong>
-          <span>기록한 카테고리</span>
+          <strong>${monthlyPosts}</strong>
+          <span>이번 달 작성한 글</span>
         </div>
 
         <div class="home-stat">
