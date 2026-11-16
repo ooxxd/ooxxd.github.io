@@ -422,7 +422,7 @@ function renderHome() {
     <!-- 카테고리 바로가기 -->
     <section class="home-section">
       <div class="section-title">
-        <h2>⸝𖤐 Categories</h2>
+        <h2>✿ܓ Categories</h2>
       </div>
 
       <div class="home-category-grid">
