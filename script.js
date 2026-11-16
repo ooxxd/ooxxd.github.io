@@ -346,10 +346,20 @@ function calendarHTML() {
    Home Dashboard
 =========================================== */
 
+
 function renderHome() {
   const list = allPosts();
 
-  // 현재 연도와 월 가져오기
+  // 카테고리별 게시글 개수 계산
+  const categoryCounts = {};
+
+  CATEGORIES.forEach(category => {
+    categoryCounts[category] = list.filter(
+      post => post.category === category
+    ).length;
+  });
+
+  // 이번 달 게시글 개수 계산
   const today = new Date();
 
   const currentMonth =
@@ -357,11 +367,9 @@ function renderHome() {
       today.getMonth() + 1
     ).padStart(2, "0")}`;
 
-  // 이번 달에 작성한 게시글 개수 계산
   const monthlyPosts = list.filter(post =>
     post.date.startsWith(currentMonth)
   ).length;
-
 
   const uniqueTags = new Set(
     list.flatMap(post => post.tags || [])
