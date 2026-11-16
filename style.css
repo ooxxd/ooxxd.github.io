@@ -1580,3 +1580,39 @@ body.light .post-back {
   line-height: 1.5;
   vertical-align: middle;
 }
+
+
+/* =====================================
+   메인 카테고리 카드 디자인 수정
+===================================== */
+
+/* 카테고리 카드 */
+.home-category-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 135px;
+  gap: 12px;
+  padding: 22px;
+
+  text-align: center;
+}
+
+/* 카테고리 이름 및 아이콘 */
+.home-category-name {
+  font-size: 21px;
+  font-weight: 600;
+  line-height: 1.5;
+  text-align: center;
+}
+
+/* 게시글 개수 */
+.home-category-count {
+  align-self: center;
+
+  font-size: 15px;
+  line-height: 1.5;
+  text-align: center;
+}
