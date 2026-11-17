@@ -151,6 +151,13 @@ function hero() {
 
       <div class="hero-content">
 
+  <!-- 장식용 꽃 3개 -->
+  <div class="hero-flowers" aria-hidden="true">
+    <span class="hero-flower flower-one">✿</span>
+    <span class="hero-flower flower-two">✿</span>
+    <span class="hero-flower flower-three">✿</span>
+  </div>
+
         <h1>Security Study Log_</h1>
 
         <div class="hero-subtitle">
