@@ -1761,22 +1761,43 @@ body.light .post-back {
   font-size: 14px;
 }
 
+
+/* =====================================
+   메인 소개 화면 꽃 장식
+===================================== */
+
 .hero-content::before {
   content: "✿";
   position: absolute;
-  right: 85px;
-  top: 52%;
-  transform: translateY(-50%);
+  right: 105px;
+  top: 38%;
   z-index: -1;
 
-  font-size: 140px;
+  font-size: 130px;
   line-height: 1;
   color: #e7c46a;
-  opacity: 0.28;
+  opacity: 0.38;
+
+  text-shadow:
+    90px -55px 0 #d9a6a1,
+    -85px 95px 0 #c5b990;
 
   pointer-events: none;
 }
 
+/* 화면이 작아졌을 때 */
+@media (max-width: 760px) {
+  .hero-content::before {
+    right: 15px;
+    top: 45%;
+    font-size: 75px;
+    opacity: 0.18;
+
+    text-shadow:
+      45px -35px 0 #d9a6a1,
+      -35px 60px 0 #c5b990;
+  }
+}
 
 /* =====================================
    카테고리 카드 불규칙 꽃 장식
