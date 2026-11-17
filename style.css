@@ -2,7 +2,7 @@
    ooxxd's Security Note
    Brown / Cream / Soft Yellow · Retro Pixel Blog Theme
 ========================================================= */
-
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 @import url("https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Jua&family=Pixelify+Sans:wght@400;500;600;700&display=swap");
 
 :root {
@@ -1739,4 +1739,24 @@ body.light .post-back {
   .home-stat .stat-desc {
     font-size: 11px;
   }
+}
+
+
+/* 읽기 쉬운 픽셀 숫자 폰트 */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+/* 학습 아카이브 숫자만 변경 */
+.home-stat .stat-value strong {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 27px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 1px;
+  color: var(--yellow);
+}
+
+/* posts / tags 단위는 기존 픽셀 폰트 유지 */
+.home-stat .stat-unit {
+  font-family: var(--font-pixel);
+  font-size: 14px;
 }
