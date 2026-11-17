@@ -158,8 +158,7 @@ function hero() {
         </div>
 
         <p>
-          보안 공부 과정과 기록을
-          차곡차곡 남기는 공간입니다.
+          차곡차곡 기록하는 공간 ☁
         </p>
 
         <div class="actions">
