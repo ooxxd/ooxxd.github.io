@@ -1776,3 +1776,67 @@ body.light .post-back {
 
   pointer-events: none;
 }
+
+
+/* =====================================
+   카테고리 카드 불규칙 꽃 장식
+===================================== */
+
+.home-category-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+/* 기본 꽃 장식 */
+.home-category-card::before {
+  content: "✿";
+  position: absolute;
+  z-index: -1;
+  color: #e7c46a;
+  opacity: 0.28;
+  line-height: 1;
+  pointer-events: none;
+}
+
+/* 1. 개발 - 오른쪽 아래에 큰 꽃 */
+.home-category-card:nth-child(1)::before {
+  right: -12px;
+  bottom: -38px;
+  font-size: 145px;
+  transform: rotate(-18deg);
+}
+
+/* 2. CTF/Wargame - 꽃 없음 */
+.home-category-card:nth-child(2)::before {
+  content: none;
+}
+
+/* 3. Bug Bounty - 왼쪽 위에 작은 꽃 */
+.home-category-card:nth-child(3)::before {
+  left: -12px;
+  top: -20px;
+  font-size: 85px;
+  transform: rotate(24deg);
+}
+
+/* 4. 블로그/기술문서 - 오른쪽 위에 중간 꽃 */
+.home-category-card:nth-child(4)::before {
+  right: 38px;
+  top: -42px;
+  font-size: 115px;
+  transform: rotate(12deg);
+}
+
+/* 5. 논문/컨퍼런스 - 꽃 없음 */
+.home-category-card:nth-child(5)::before {
+  content: none;
+}
+
+/* 6. 공모전/자격증 - 왼쪽 아래에 큰 꽃 */
+.home-category-card:nth-child(6)::before {
+  left: 24px;
+  bottom: -55px;
+  font-size: 130px;
+  transform: rotate(-30deg);
+}
