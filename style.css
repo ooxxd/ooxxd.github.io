@@ -1761,43 +1761,87 @@ body.light .post-back {
   font-size: 14px;
 }
 
-
 /* =====================================
    메인 소개 화면 꽃 장식
 ===================================== */
 
+/* 기존 text-shadow 꽃 제거 */
 .hero-content::before {
-  content: "✿";
+  content: none !important;
+}
+
+/* 꽃 장식 영역 */
+.hero-flowers {
   position: absolute;
-  right: 105px;
-  top: 38%;
+  inset: 0;
   z-index: -1;
-
-  font-size: 130px;
-  line-height: 1;
-  color: #e7c46a;
-  opacity: 0.38;
-
-  text-shadow:
-    90px -55px 0 #d9a6a1,
-    -85px 95px 0 #c5b990;
-
   pointer-events: none;
 }
 
-/* 화면이 작아졌을 때 */
-@media (max-width: 760px) {
-  .hero-content::before {
-    right: 15px;
-    top: 45%;
-    font-size: 75px;
-    opacity: 0.18;
+/* 꽃 공통 스타일 */
+.hero-flower {
+  position: absolute;
+  display: block;
+  font-family: Georgia, serif;
+  line-height: 1;
+  pointer-events: none;
+}
 
-    text-shadow:
-      45px -35px 0 #d9a6a1,
-      -35px 60px 0 #c5b990;
+/* 큰 노란색 꽃 */
+.flower-one {
+  right: 13%;
+  top: 33%;
+  font-size: 135px;
+  color: #e7c46a;
+  opacity: 0.42;
+  transform: rotate(-10deg);
+}
+
+/* 작은 분홍색 꽃 */
+.flower-two {
+  right: 3%;
+  top: 12%;
+  font-size: 65px;
+  color: #d9a6a1;
+  opacity: 0.42;
+  transform: rotate(18deg);
+}
+
+/* 작은 올리브색 꽃 */
+.flower-three {
+  right: 36%;
+  bottom: 8%;
+  font-size: 55px;
+  color: #b7ad83;
+  opacity: 0.42;
+  transform: rotate(-20deg);
+}
+
+/* 모바일 화면 */
+@media (max-width: 760px) {
+  .hero-flower {
+    opacity: 0.15;
+  }
+
+  .flower-one {
+    right: -10px;
+    top: 42%;
+    font-size: 85px;
+  }
+
+  .flower-two {
+    right: 8px;
+    top: 12%;
+    font-size: 45px;
+  }
+
+  .flower-three {
+    right: 30%;
+    bottom: 5%;
+    font-size: 35px;
   }
 }
+
 
 /* =====================================
    카테고리 카드 불규칙 꽃 장식
