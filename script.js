@@ -406,24 +406,38 @@ function renderHome() {
         <h2>▤ 학습 아카이브</h2>
       </div>
 
-      <div class="home-stats">
+      
+<div class="home-stats">
 
-        <div class="home-stat">
-          <strong>${list.length}</strong>
-          <span>전체 게시글</span>
-        </div>
+  <div class="home-stat">
+    <div class="stat-value">
+      <strong>${list.length}</strong>
+      <span class="stat-unit">posts</span>
+    </div>
+    <span class="stat-title">전체 게시글</span>
+    <span class="stat-desc">지금까지 작성한 글</span>
+  </div>
 
-        <div class="home-stat">
-          <strong>${monthlyPosts}</strong>
-          <span>이번 달 작성한 글</span>
-        </div>
+  <div class="home-stat">
+    <div class="stat-value">
+      <strong>${monthlyPosts}</strong>
+      <span class="stat-unit">posts</span>
+    </div>
+    <span class="stat-title">이번 달 게시글</span>
+    <span class="stat-desc">이번 달에 작성한 글</span>
+  </div>
 
-        <div class="home-stat">
-          <strong>${uniqueTags.size}</strong>
-          <span>사용한 태그</span>
-        </div>
+  <div class="home-stat">
+    <div class="stat-value">
+      <strong>${uniqueTags.size}</strong>
+      <span class="stat-unit">tags</span>
+    </div>
+    <span class="stat-title">사용한 태그</span>
+    <span class="stat-desc">중복 없이 사용한 태그</span>
+  </div>
 
-      </div>
+</div>
+
     </section>
 
     <!-- 카테고리 바로가기 -->
