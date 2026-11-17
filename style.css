@@ -1755,8 +1755,24 @@ body.light .post-back {
   color: var(--yellow);
 }
 
-/* posts / tags 단위는 기존 픽셀 폰트 유지 */
+/* posts / tags 단위는 기존 픽셀 폰트 유지 (큰 꽃 ! ) */
 .home-stat .stat-unit {
   font-family: var(--font-pixel);
   font-size: 14px;
+}
+
+.hero-content::before {
+  content: "✿";
+  position: absolute;
+  right: 85px;
+  top: 52%;
+  transform: translateY(-50%);
+  z-index: -1;
+
+  font-size: 140px;
+  line-height: 1;
+  color: #e7c46a;
+  opacity: 0.28;
+
+  pointer-events: none;
 }
