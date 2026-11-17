@@ -1672,3 +1672,71 @@ body.light .post-back {
   border-radius: 7px;
   font-weight: bold;
 }
+
+
+/* 학습 아카이브 - 픽셀 폰트 통계 카드 */
+
+.home-stat {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 145px;
+  gap: 8px;
+  padding: 22px 20px;
+}
+
+/* 숫자와 단위 */
+.stat-value {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.stat-value strong {
+  font-family: var(--font-pixel);
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--yellow);
+}
+
+.home-stat .stat-unit {
+  font-family: var(--font-pixel);
+  font-size: 15px;
+  color: var(--yellow);
+}
+
+/* 제목도 도트 폰트 */
+.home-stat .stat-title {
+  font-family: var(--font-pixel);
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+/* 설명은 가독성 좋은 기존 한글 폰트 */
+.home-stat .stat-desc {
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: var(--sub);
+}
+
+@media (max-width: 760px) {
+  .home-stat {
+    min-height: 120px;
+    padding: 15px 12px;
+  }
+
+  .stat-value strong {
+    font-size: 28px;
+  }
+
+  .home-stat .stat-title {
+    font-size: 14px;
+  }
+
+  .home-stat .stat-desc {
+    font-size: 11px;
+  }
+}
