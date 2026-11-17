@@ -1616,3 +1616,59 @@ body.light .post-back {
   line-height: 1.5;
   text-align: center;
 }
+
+
+/* 오른쪽 미니 캘린더 */
+
+.mini-calendar-content {
+  padding: 16px;
+}
+
+.mini-calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.mini-calendar-header strong {
+  color: var(--text);
+  font-size: 14px;
+}
+
+.mini-calendar-header button {
+  background: transparent;
+  color: var(--yellow);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1px 10px;
+  font-size: 18px;
+}
+
+.mini-calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 3px;
+  text-align: center;
+}
+
+.mini-calendar-day {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 29px;
+  color: var(--text);
+  font-size: 12px;
+}
+
+.mini-calendar-day.weekday {
+  color: var(--sub);
+  font-weight: bold;
+}
+
+.mini-calendar-day.today {
+  background: var(--yellow);
+  color: var(--ink);
+  border-radius: 7px;
+  font-weight: bold;
+}
