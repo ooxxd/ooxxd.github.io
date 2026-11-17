@@ -977,3 +977,73 @@ document.addEventListener(
   "DOMContentLoaded",
   init
 );
+
+
+/* 오른쪽 날짜 확인용 미니 캘린더 */
+
+let miniCalendarDate = new Date();
+
+function renderMiniCalendar() {
+  const container = document.getElementById("mini-calendar");
+  const title = document.getElementById("mini-month");
+
+  if (!container || !title) return;
+
+  const year = miniCalendarDate.getFullYear();
+  const month = miniCalendarDate.getMonth();
+
+  const today = new Date();
+  const firstDay = new Date(year, month, 1).getDay();
+  const lastDate = new Date(year, month + 1, 0).getDate();
+
+  title.textContent = `${year}년 ${month + 1}월`;
+
+  const weekdays = ["일", "월", "화", "수", "목", "금", "토"];
+
+  container.replaceChildren();
+
+  weekdays.forEach(day => {
+    const el = document.createElement("div");
+    el.className = "mini-calendar-day weekday";
+    el.textContent = day;
+    container.appendChild(el);
+  });
+
+  for (let i = 0; i < firstDay; i++) {
+    const empty = document.createElement("div");
+    container.appendChild(empty);
+  }
+
+  for (let day = 1; day <= lastDate; day++) {
+    const el = document.createElement("div");
+    el.className = "mini-calendar-day";
+    el.textContent = day;
+
+    if (
+      year === today.getFullYear() &&
+      month === today.getMonth() &&
+      day === today.getDate()
+    ) {
+      el.classList.add("today");
+    }
+
+    container.appendChild(el);
+  }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  renderMiniCalendar();
+
+  document.getElementById("mini-prev")?.addEventListener("click", () => {
+    miniCalendarDate.setDate(1);
+    miniCalendarDate.setMonth(miniCalendarDate.getMonth() - 1);
+    renderMiniCalendar();
+  });
+
+  document.getElementById("mini-next")?.addEventListener("click", () => {
+    miniCalendarDate.setDate(1);
+    miniCalendarDate.setMonth(miniCalendarDate.getMonth() + 1);
+    renderMiniCalendar();
+  });
+});
+
