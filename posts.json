@@ -8,14 +8,5 @@
     "tags": ["GitHub", "Blog"],
     "summary": "개인 기술 블로그 첫 게시글",
     "url": "/posts/first-post/"
-  },
-  {
-    "id": "ctf-study",
-    "title": "CTF 문제 풀이 학습 기록",
-    "date": "2026-11-17",
-    "category": "CTF/Wargame",
-    "tags": ["CTF", "Web", "Wargame"],
-    "summary": "CTF 문제 풀이를 통해 배운 내용을 정리한 학습 기록",
-    "url": "/posts/ctf-study/"
   }
 ]
